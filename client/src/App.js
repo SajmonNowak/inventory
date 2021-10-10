@@ -3,12 +3,12 @@ import { useEffect, useState } from "react";
 function App() {
   const [customers, setCustomers] = useState([]);
 
-  useEffect(() =>{
-    fetch("/customers/api")
-      .then((res) => res.json())
-      .then((items) => setCustomers(items))
-      .then(console.log(customers))
-  }, [])
+  // useEffect(() =>{
+  //   fetch("/add-food")
+  //     .then((res) => res.json())
+  //     .then((items) => setCustomers(items))
+  //     .then(console.log(customers))
+  // }, [])
 
   return (
     <div className="App">
