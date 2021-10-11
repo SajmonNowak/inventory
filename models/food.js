@@ -14,6 +14,10 @@ const foodSchema = new Schema ({
         type: Number,
         required: true
     },
+    category: {
+        type: String,
+        required: false,
+    },
     price: Number,
     shelf_life: Number
 });

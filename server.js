@@ -1,8 +1,9 @@
 const express = require("express");
 const mongoose = require("mongoose");
-const Food = require("./models/food");
 
 const app = express();
+app.use(express.json());
+app.use(express.urlencoded({extended:false}))
 
 const port = process.env.PORT || 5000;
 
@@ -16,20 +17,5 @@ mongoose
   )
   .catch((err) => console.log(err));
 
-app.get("/add-food", (req, res) => {
-  const food = new Food({
-    name: "Strawberry",
-    type: "Fruit",
-    amount: 4,
-    price: 2,
-    shelf_life: 5,
-  });
-
-  food.save()
-});
-
-app.get("/customers/api", (req, res) => {
-  const customers = [{ name: "henrike" }, { name: "tom" }, { name: "john" }];
-
-  res.json(customers);
-});
+app.use("/food", require("./routes/food"));
+app.use("/home", require("./routes/home"));

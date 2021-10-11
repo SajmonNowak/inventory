@@ -1,23 +1,15 @@
-import { useEffect, useState } from "react";
+import Home from "./components/Home";
+import AddPage from "./components/AddPage";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 function App() {
-  const [customers, setCustomers] = useState([]);
-
-  // useEffect(() =>{
-  //   fetch("/add-food")
-  //     .then((res) => res.json())
-  //     .then((items) => setCustomers(items))
-  //     .then(console.log(customers))
-  // }, [])
-
   return (
-    <div className="App">
-      <header>
-        {customers.map((item) => {
-          return <p>{item.name}</p>;
-        })}
-      </header>
-    </div>
+    <Router>
+      <Switch>
+        <Route path="/" exact component={Home} />
+        <Route parth="/add" component={AddPage}/>
+      </Switch>
+    </Router>
   );
 }
 
