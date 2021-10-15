@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const foodSchema = new Schema ({
+    id: String,
     name: {
         type: String,
         required: true
@@ -19,6 +20,7 @@ const foodSchema = new Schema ({
         required: false,
     },
     price: Number,
+    created: String,
     shelf_life: Number
 });
 

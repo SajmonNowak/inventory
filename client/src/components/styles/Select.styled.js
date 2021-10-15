@@ -1,16 +1,16 @@
 import styled from 'styled-components';
 
 export const SelectContainer = styled.div`
-  width: 100px;
-  height: 50px;
+  height: 70px;
+  margin: 20px 0px;
 `;
 
 export const Select = styled.select`
-  width: 100px;
+  width: 100%;
   height: 50px;
+  font-size: 18px;
 `;
 
 export const Option = styled.option`
-   width: 100px;
-  height: 50px;
+
 `;
