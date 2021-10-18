@@ -38,10 +38,19 @@ router.post("/", (req, res) => {
 });
 
 router.delete("/", (req, res) => {
-  const found = req.body.id;
-  console.log(req.body._id);
-
   Food.deleteOne({ _id: req.body._id }).then((answer) => res.status(201).send("Sucess")).catch(err => res.status(400).send(err));
 });
+
+router.put("/", (req, res) => {
+  console.log(req.body)
+
+  const changes = {
+    name: req.body.itemName,
+    price: req.body.itemPrice,
+    amount: req.body.itemAmount,
+  }
+ 
+  Food.findByIdAndUpdate(req.body._id, changes).then((answer) => res.status(201).send("Sucess")).catch(err => res.status(400).send(err))
+})
 
 module.exports = router;

@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import {InputContainer, Label, Input} from "./styles/Input.styled"
 
-const TextInput = ({inputName, setParentState, min, step}) => {
+const TextInput = ({inputName, setParentState, min, step, value}) => {
     const [state, setState] = useState();
 
     const handleChange = (e) => {
@@ -12,7 +12,7 @@ const TextInput = ({inputName, setParentState, min, step}) => {
     return (
         <InputContainer>
         <Label>{inputName}</Label>
-        <Input name={inputName} onChange={handleChange} type={min ? "number" : "text"} min={min ? min : undefined} step={step ? step : undefined}/>
+        <Input name={inputName} onChange={handleChange} type={min ? "number" : "text"} min={min ? min : undefined} step={step ? step : undefined} value = {value}/>
         </InputContainer>
     )
 }

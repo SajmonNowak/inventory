@@ -25,9 +25,8 @@ const Home = () => {
       let data = resp.data;
       setInventory(data);
     });
-  }, []);
+  });
 
-  console.log(inventory);
   return (
     <MainPage>
       <InventoryTable>
@@ -38,6 +37,7 @@ const Home = () => {
               <Category>Category</Category>
               <Price>Price</Price>
               <Total>Total</Total>
+              <Created>Date</Created>
         </ItemDescription>
         {inventory.map((item, key) => {
           return (
