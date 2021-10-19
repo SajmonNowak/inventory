@@ -19,3 +19,4 @@ mongoose
 
 app.use("/food", require("./routes/food"));
 app.use("/home", require("./routes/home"));
+app.use("/nonfood", require("./routes/nonfood"))

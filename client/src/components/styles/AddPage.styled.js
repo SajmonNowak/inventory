@@ -21,3 +21,10 @@ display: flex;
   margin-right: 20px;
 }
 `;
+
+export const Message = styled.div`
+
+color: red;
+font-size: 22px;
+  
+`;

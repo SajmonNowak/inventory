@@ -41,6 +41,7 @@ const UpdatePage = (props) => {
 
   return (
     <AddPageContainer>
+      <h2> Update </h2>
       <Form>
         <TextInput
           value={name}
@@ -76,7 +77,7 @@ const UpdatePage = (props) => {
           />
         </NumberInputContainer>
         <Button type="submit" onClick={handleUpdate}>
-          Add Item
+          Update Item
         </Button>
       </Form>
     </AddPageContainer>
