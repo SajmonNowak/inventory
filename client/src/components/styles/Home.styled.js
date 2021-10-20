@@ -64,3 +64,14 @@ export const ItemDescription = styled(Item)`
   color: white;
   font-weight: bold;
 `;
+
+export const ImageContainer = styled.div`
+  width: 50px;
+  height: 50px;
+`;
+
+export const Image = styled.img`
+  width: 100%;
+  height: 100%;
+
+`;

@@ -12,10 +12,13 @@ import {
   MainPage,
   Category,
   Created,
+  Image,
+  ImageContainer
 } from "./styles/Home.styled";
 import { Button } from "./styles/Button.styled";
 import { Link } from "react-router-dom";
 import CommandNav from "./CommandNav";
+
 
 const Home = () => {
   const [inventory, setInventory] = useState([]);
@@ -43,6 +46,9 @@ const Home = () => {
           return (
             <Item odd={key % 2 === 0} key={key}>
               <ItemName>{item.name}</ItemName>
+              <ImageContainer>
+              <Image src={process.env.PUBLIC_URL + item.imgPath.replace("client/public", "")} alt={item.name}/>
+              </ImageContainer>
               <Amount>{item.amount}</Amount>
               <Type>{item.type}</Type>
               <Category>{item.category}</Category>
