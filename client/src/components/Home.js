@@ -35,6 +35,7 @@ const Home = () => {
       <InventoryTable>
         <ItemDescription>
               <ItemName>Name</ItemName>
+              <ImageContainer>Image</ImageContainer>
               <Amount>Amount</Amount>
               <Type>Type</Type>
               <Category>Category</Category>

@@ -19,19 +19,22 @@ export const InventoryTable = styled.div`
 export const Item = styled.div`
 position: relative;
   display: flex;
+  color: white;
   align-items: center;
-  background-color: ${({ odd }) => (!odd ? "white" : "lightgrey")};
-  height: 40px;
+  background-color: ${({ odd }) => (!odd ? "#014f86" : "#61a5c2")};
+  height: 100px;
+  margin: 1px;
   border: 1px solid;
+  border-radius: 15px;
   border-color: ${({ odd }) => (!odd ? "white" : "lightgrey")};
   &:hover {
-    border: 1px solid blue;
+    border: 1px solid #012a4a;
   }
 `;
 
 export const ItemName = styled.div`
 padding-left: 20px;
-min-width: 200px;
+min-width: 150px;
 font-weight: bold;
 `;
 
@@ -66,12 +69,16 @@ export const ItemDescription = styled(Item)`
 `;
 
 export const ImageContainer = styled.div`
-  width: 50px;
+display: flex;
+justify-content: center;
+align-items: center;
+  width: 100px;
   height: 50px;
+  margin-right: 20px;
 `;
 
 export const Image = styled.img`
-  width: 100%;
+  width: 50px;
   height: 100%;
 
 `;

@@ -4,7 +4,7 @@ import { GrUpdate } from "react-icons/gr";
 
 export const CommandContainer = styled.div`
     position: absolute;
-    right: 0px;
+    right: 10px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -15,8 +15,6 @@ export const CommandContainer = styled.div`
 export const Command = styled.div`
   width: 40px;
   height: 80%;
-  border: 1px solid black;
-  background-color: #f5f1ed;
   margin: 20px 0px;
   display: flex;
   justify-content: center;
