@@ -21,7 +21,8 @@ const foodSchema = new Schema ({
     },
     price: Number,
     created: String,
-    shelf_life: Number
+    shelf_life: Number,
+    imgPath: String,
 });
 
 const Food = mongoose.model('food', foodSchema);

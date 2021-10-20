@@ -2,19 +2,6 @@ const express = require("express");
 const router = express.Router();
 const Food = require("../models/food");
 const { formatDate, formatBack } = require("../helper/formatDate");
-const multer = require("multer");
-const path = require("path");
-
-const storage = multer.diskStorage({
-  destination: '../public/uploads',
-  filename: function (req,file,cb){
-    cb(null, file.fieldname+ "-"+Date.now()+path.extname(file.originalname));
-  }
-});
-
-const upload = multer({
-  storage: storage
-})
 
 router.get("/", (req, res) => {
   Food.find()
@@ -30,9 +17,8 @@ router.get("/:id", (req, res) => {
   });
 });
 
-router.post("/", upload.single("itemImage"), (req, res) => {
+router.post("/", (req, res) => {
   const timeOfCreation = formatDate(new Date());
-  console.log(req.file);
   const food = new Food({
     created: timeOfCreation,
     name: req.body.itemName,
