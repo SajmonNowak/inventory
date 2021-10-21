@@ -12,7 +12,8 @@ import { useHistory } from "react-router-dom";
 import useToggle from "./hooks/useToggle";
 
 const CommandNav = ({ item, reRenderHome}) => {
-  const [open, toggle] = useState("pi")
+  const [open, toggle] = useToggle(null);
+  console.log(open)
   let history = useHistory();
   console.log(open);
   const handleDelete = () => {
