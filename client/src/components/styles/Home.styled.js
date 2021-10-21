@@ -19,9 +19,8 @@ export const InventoryTable = styled.div`
 export const Item = styled.div`
 position: relative;
   display: flex;
-  color: white;
   align-items: center;
-  background-color: ${({ odd }) => (!odd ? "#014f86" : "#61a5c2")};
+  background-color: ${({ odd }) => (!odd ? "#E2EAFC" : "#EDF2FB")};
   height: 100px;
   margin: 1px;
   border: 1px solid;

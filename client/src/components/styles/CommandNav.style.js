@@ -1,6 +1,8 @@
 import styled from "styled-components";
 import { BsTrash } from "react-icons/bs";
 import { GrUpdate } from "react-icons/gr";
+import { HiDotsHorizontal } from "react-icons/hi";
+
 
 export const CommandContainer = styled.div`
     position: absolute;
@@ -13,7 +15,7 @@ export const CommandContainer = styled.div`
 `;
 
 export const Command = styled.div`
-  width: 40px;
+  width: 35px;
   height: 80%;
   margin: 20px 0px;
   display: flex;
@@ -29,4 +31,26 @@ export const TrashIcon = styled(BsTrash)`
 export const UpdateIcon = styled(GrUpdate)`
   width: 80%;
   height: 60%;
+`;
+
+export const DotsIcon = styled(HiDotsHorizontal)`
+ width: 50px;
+ height: 50px;
+ transform: ${({open}) => open ? "rotate(0.25turn)" : "none"};
+ animation: ${({open}) => open ? "rotate" : open === null ? "none" : "roateBack"};
+  animation-duration: 1s;
+
+
+ @keyframes rotate {
+  from {transform: rotate(0turn)}
+  to {transform: rotate(0.25turn)}
+}
+
+@keyframes rotateBack {
+  from {transform: rotate(0.25turn)}
+  to {transform: rotate(0turn)}
+}
+`
+export const Menu = styled.div`
+  
 `;

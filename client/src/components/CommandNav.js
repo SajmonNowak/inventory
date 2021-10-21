@@ -1,21 +1,25 @@
 import axios from "axios";
-import React from "react";
+import React, {useState} from "react";
 import {
   Command,
   CommandContainer,
+  DotsIcon,
   TrashIcon,
   UpdateIcon,
+  Menu
 } from "./styles/CommandNav.style";
 import { useHistory } from "react-router-dom";
+import useToggle from "./hooks/useToggle";
 
-const CommandNav = ({ item }) => {
+const CommandNav = ({ item, reRenderHome}) => {
+  const [open, toggle] = useState("pi")
   let history = useHistory();
-
+  console.log(open);
   const handleDelete = () => {
     axios
       .delete("/food", {
         data: item,
-      })
+      }).then((answer) => reRenderHome() )
       .catch((err) => console.log(err.body));
   };
 
@@ -28,12 +32,17 @@ const CommandNav = ({ item }) => {
 
   return (
     <CommandContainer>
+      <DotsIcon onClick={toggle} open={open}/>
+      {open &&
+      <Menu>
       <Command>
         <UpdateIcon onClick={openUpdate} />
       </Command>
-      <Command onClick={handleDelete}>
-        <TrashIcon />
+      <Command >
+        <TrashIcon onClick={handleDelete} />
       </Command>
+      </Menu>
+      }
     </CommandContainer>
   );
 };

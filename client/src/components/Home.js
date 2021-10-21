@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect} from "react";
 import axios from "axios";
 import {
   Amount,
@@ -22,13 +22,14 @@ import CommandNav from "./CommandNav";
 
 const Home = () => {
   const [inventory, setInventory] = useState([]);
+  const [render, reRenderHome] = useState(0);
 
   useEffect(() => {
     axios.get("/home").then((resp) => {
       let data = resp.data;
       setInventory(data);
     });
-  });
+  }, [render]);
 
   return (
     <MainPage>
@@ -48,7 +49,7 @@ const Home = () => {
             <Item odd={key % 2 === 0} key={key}>
               <ItemName>{item.name}</ItemName>
               <ImageContainer>
-              <Image src={process.env.PUBLIC_URL + item.imgPath.replace("client/public", "")} alt={item.name}/>
+              <Image src={item.imgPath ? process.env.PUBLIC_URL + item.imgPath.replace("client/public", "") : ""} alt={item.name}/>
               </ImageContainer>
               <Amount>{item.amount}</Amount>
               <Type>{item.type}</Type>
@@ -56,7 +57,7 @@ const Home = () => {
               <Price>{item.price}</Price>
               <Total>{Math.round(item.price * item.amount * 100) / 100}</Total>
               <Created>{item.created}</Created>
-              <CommandNav item={item}/>
+              <CommandNav item={item} reRenderHome={() => reRenderHome(render+1)}/>
             </Item>
           );
         })}
