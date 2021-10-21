@@ -18,6 +18,7 @@ import {
 import { Button } from "./styles/Button.styled";
 import { Link } from "react-router-dom";
 import CommandNav from "./CommandNav";
+import placeholder from "../data/placeholder.png"
 
 
 const Home = () => {
@@ -49,7 +50,7 @@ const Home = () => {
             <Item odd={key % 2 === 0} key={key}>
               <ItemName>{item.name}</ItemName>
               <ImageContainer>
-              <Image src={item.imgPath ? process.env.PUBLIC_URL + item.imgPath.replace("client/public", "") : ""} alt={item.name}/>
+              <Image src={item.imgPath ? process.env.PUBLIC_URL + item.imgPath.replace("client/public", "") : placeholder } alt={item.name}/>
               </ImageContainer>
               <Amount>{item.amount}</Amount>
               <Type>{item.type}</Type>

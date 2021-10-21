@@ -3,10 +3,9 @@ import { BsTrash } from "react-icons/bs";
 import { GrUpdate } from "react-icons/gr";
 import { HiDotsHorizontal } from "react-icons/hi";
 
-
 export const CommandContainer = styled.div`
-    position: absolute;
-    right: 10px;
+  position: absolute;
+  right: 10px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -34,23 +33,29 @@ export const UpdateIcon = styled(GrUpdate)`
 `;
 
 export const DotsIcon = styled(HiDotsHorizontal)`
- width: 50px;
- height: 50px;
- transform: ${({open}) => open ? "rotate(0.25turn)" : "none"};
- animation: ${({open}) => open == true ? "rotate" :  (open == null) ? "none" : "rotateBack"};
+  width: 50px;
+  height: 50px;
+  transform: ${({ open }) => (open ? "rotate(0.25turn)" : "none")};
+  animation: ${({ open }) =>
+    open == true ? "rotate" : open == null ? "none" : "rotateBack"};
   animation-duration: 1s;
 
+  @keyframes rotate {
+    from {
+      transform: rotate(0turn);
+    }
+    to {
+      transform: rotate(0.25turn);
+    }
+  }
 
- @keyframes rotate {
-  from {transform: rotate(0turn)}
-  to {transform: rotate(0.25turn)}
-}
-
-@keyframes rotateBack {
-  from {transform: rotate(0.25turn)}
-  to {transform: rotate(0turn)}
-}
-`
-export const Menu = styled.div`
-  
+  @keyframes rotateBack {
+    from {
+      transform: rotate(0.25turn);
+    }
+    to {
+      transform: rotate(0turn);
+    }
+  }
 `;
+export const Menu = styled.div``;
