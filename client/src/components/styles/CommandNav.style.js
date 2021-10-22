@@ -37,7 +37,7 @@ export const DotsIcon = styled(HiDotsHorizontal)`
   height: 50px;
   transform: ${({ open }) => (open ? "rotate(0.25turn)" : "none")};
   animation: ${({ open }) =>
-    open == true ? "rotate" : open == null ? "none" : "rotateBack"};
+    open === true ? "rotate" : open === null ? "none" : "rotateBack"};
   animation-duration: 1s;
 
   @keyframes rotate {

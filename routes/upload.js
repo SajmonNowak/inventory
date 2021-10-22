@@ -21,7 +21,7 @@ router.post("/", upload.single("itemImage"), (req, res) => {
     { name: req.body.itemName },
     { $set: { imgPath: req.file.path } },
     { multi: true }
-  ).then((answer) => console.log(answer))
+  ).then((answer) => console.log(answer));
 });
 
 module.exports = router;

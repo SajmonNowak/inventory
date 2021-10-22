@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, {useState} from "react";
+import React from "react";
 import {
   Command,
   CommandContainer,
@@ -13,9 +13,7 @@ import useToggle from "./hooks/useToggle";
 
 const CommandNav = ({ item, reRenderHome}) => {
   const [open, toggle] = useToggle(null);
-  console.log(open)
   let history = useHistory();
-  console.log(open);
   const handleDelete = () => {
     axios
       .delete("/food", {

@@ -29,14 +29,6 @@ router.post("/", (req, res) => {
     id: req.body.itemName + formatBack(timeOfCreation),
   });
 
-  // upload(req, res , (err) => {
-  //   if (err){
-  //     console.log(err)
-  //   } else {
-  //     console.log(req.file)
-  //   }
-  // })
-
   food
     .save()
     .then((answer) => res.status(201).send("Successfully created Item"))

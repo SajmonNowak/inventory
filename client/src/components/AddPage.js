@@ -6,6 +6,7 @@ import {
   Form,
   NumberInputContainer,
   Message,
+  MessageContainer,
 } from "./styles/AddPage.styled";
 import { Button } from "./styles/Button.styled";
 import TextInput from "./TextInput";
@@ -24,45 +25,47 @@ const AddPage = () => {
   const addToDB = async (e) => {
     e.preventDefault();
 
-    // const data = new FormData();
-    // data.append("itemName", name);
-    // data.append("itemCategory", category);
-    // data.append("itemType", type);
-    // data.append("itemPrice", price);
-    // data.append("itemAmount", amount);
-    //data.append("itemImage", picture);
-
     const textData = {
       itemName: name,
       itemCategory: category,
       itemType: type,
       itemPrice: price,
       itemAmount: amount,
-    }
+    };
 
-    const response = await axios
-      .post(`/${type}`, textData)
-      .catch((err) => {
-        console.log(err.response);
-        setMessage("Please fill in all required fields");
-      });
+    const response = await axios.post(`/${type}`, textData).catch((err) => {
+      let allErrorsObj = err.response.data.errors;
+      let ErrorObj = [...Object.values(allErrorsObj)];
+      let messages = new Array(ErrorObj.map((err) => err.message));
+      setMessage(messages);
+    });
 
     if (response && response.status === 201) {
-      const imgData = new FormData();
-      imgData.append("itemImage", picture)
-      imgData.append("itemName", name )
+      if (picture !== undefined) {
+        const imgData = new FormData();
+        imgData.append("itemImage", picture);
+        imgData.append("itemName", name);
 
-      axios.post('/upload', imgData, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      })
+        axios.post("/upload", imgData, {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        });
+      }
+
       history.push("/");
     }
   };
 
   const changePic = (e) => {
     setPicture(e.target.files[0]);
+  };
+
+  const printMessages = () => {
+    const messageArray = message[0].map((m, index) => (
+      <Message key={index}>{m}</Message>
+    ));
+    return messageArray;
   };
 
   return (
@@ -91,7 +94,7 @@ const AddPage = () => {
           <TextInput inputName="Amount" min="1" setParentState={setAmount} />
         </NumberInputContainer>
         <input type="file" name="itemImage" onChange={changePic} />
-        {message && <Message>{message}</Message>}
+        {message && <MessageContainer>{printMessages()}</MessageContainer>}
         <Button type="submit" onClick={addToDB}>
           Add Item
         </Button>
