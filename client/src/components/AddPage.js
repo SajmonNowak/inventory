@@ -7,10 +7,13 @@ import {
   NumberInputContainer,
   Message,
   MessageContainer,
+  Heading,
+  ButtonContainer
 } from "./styles/AddPage.styled";
 import { Button } from "./styles/Button.styled";
 import TextInput from "./TextInput";
 import { useHistory } from "react-router-dom";
+import FileInput from "./FileInput";
 
 const AddPage = () => {
   const [name, setName] = useState();
@@ -57,10 +60,6 @@ const AddPage = () => {
     }
   };
 
-  const changePic = (e) => {
-    setPicture(e.target.files[0]);
-  };
-
   const printMessages = () => {
     const messageArray = message[0].map((m, index) => (
       <Message key={index}>{m}</Message>
@@ -68,8 +67,13 @@ const AddPage = () => {
     return messageArray;
   };
 
+  const handleCancel = () =>{
+    history.push("/");
+  }
+
   return (
     <AddPageContainer>
+      <Heading>Please fill in all fields to add new data to inventory</Heading>
       <Form>
         <TextInput inputName="Name" setParentState={setName} />
 
@@ -93,11 +97,14 @@ const AddPage = () => {
           <div className="extraMargin"></div>
           <TextInput inputName="Amount" min="1" setParentState={setAmount} />
         </NumberInputContainer>
-        <input type="file" name="itemImage" onChange={changePic} />
+        <FileInput setPicture={setPicture} label="Image" />
         {message && <MessageContainer>{printMessages()}</MessageContainer>}
-        <Button type="submit" onClick={addToDB}>
-          Add Item
-        </Button>
+        <ButtonContainer>
+          <Button onClick={handleCancel}> Cancel</Button>
+          <Button type="submit" onClick={addToDB} primary >
+            Add Item
+          </Button>
+        </ButtonContainer>
       </Form>
     </AddPageContainer>
   );

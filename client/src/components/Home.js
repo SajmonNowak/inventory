@@ -64,7 +64,7 @@ const Home = () => {
         })}
       </InventoryTable>
       <Link to="/add">
-        <Button>Add Items</Button>
+        <Button primary>Add Items</Button>
       </Link>
     </MainPage>
   );

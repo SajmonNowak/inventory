@@ -1,16 +1,17 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const SelectContainer = styled.div`
-  height: 70px;
-  margin: 20px 0px;
+  margin-top: 20px;
 `;
 
 export const Select = styled.select`
   width: 100%;
   height: 50px;
   font-size: 18px;
+  border-color: #b6ccfe;
+  background-color: #b6ccfe;
+  border-radius: 10px;
+  outline: none;
 `;
 
-export const Option = styled.option`
-
-`;
+export const Option = styled.option``;
