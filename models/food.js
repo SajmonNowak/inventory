@@ -25,7 +25,6 @@ const foodSchema = new Schema({
     min: [0, "Price must be 0 or higher"],
   },
   created: String,
-  shelf_life: Number,
   imgPath: String,
 });
 

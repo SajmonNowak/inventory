@@ -1,13 +1,17 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const nonFoodSchema = new Schema({
+const clothesSchema = new Schema({
     id: String,
     name: {
         type: String,
         required: true
     },
-    type: {
+    size : {
+        type: String || Number,
+        required: true
+    },
+    color: {
         type: String,
         required: true
     },
@@ -21,9 +25,8 @@ const nonFoodSchema = new Schema({
     },
     price: Number,
     created: String,
-    shelf_life: Number
 })
 
-const NonFood = mongoose.model('nonfood', nonFoodSchema);
+const Clothes = mongoose.model('clothes', clothesSchema);
 
-module.exports = NonFood;
+module.exports = Clothes;

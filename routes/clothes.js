@@ -1,10 +1,10 @@
 const express = require("express");
 const router = express.Router();
-const NonFood = require("../models/nonfood");
+const Clothes = require("../models/clothes");
 const { formatDate, formatBack } = require("../helper/formatDate");
 
 router.get("/", (req, res) => {
-    Food.find()
+    Clothes.find()
       .then((result) => {
         res.json(result);
       })
@@ -12,24 +12,23 @@ router.get("/", (req, res) => {
   });
   
   router.get("/:id", (req, res) => {
-    Food.findById(req.params.id).then((result) => {
+    Clothes.findById(req.params.id).then((result) => {
       res.json(result);
     });
   });
   
   router.post("/", (req, res) => {
     const timeOfCreation = formatDate(new Date());
-    const nonfood = new NonFood({
+    const clothes = new Clothes({
       created: timeOfCreation,
       name: req.body.itemName,
-      type: req.body.itemType,
       amount: req.body.itemAmount,
       category: req.body.itemCategory,
       price: req.body.itemPrice,
       id: req.body.itemName + formatBack(timeOfCreation),
     });
   
-    nonfood
+    clothes
       .save()
       .then((answer) => res.status(201).send("Successfully created Item"))
       .catch((err) => {
@@ -38,7 +37,7 @@ router.get("/", (req, res) => {
   });
   
   router.delete("/", (req, res) => {
-    Food.deleteOne({ _id: req.body._id })
+    Clothes.deleteOne({ _id: req.body._id })
       .then((answer) => res.status(201).send("Sucess"))
       .catch((err) => res.status(400).send(err));
   });
@@ -52,7 +51,7 @@ router.get("/", (req, res) => {
       type: req.body.itemType,
     };
   
-    Food.findByIdAndUpdate(req.body._id, changes)
+    Clothes.findByIdAndUpdate(req.body._id, changes)
       .then((answer) => res.status(201).send("Sucess"))
       .catch((err) => res.status(400).send(err));
   });
