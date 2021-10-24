@@ -2,7 +2,7 @@ import React from "react";
 import { Label } from "./styles/Input.styled";
 import { SelectContainer, Select, Option } from "./styles/Select.styled";
 
-const SelectInput = ({ selectName, options, setParentState, value }) => {
+const SelectInput = ({ selectName, options, register, value }) => {
   const createSelectOptions = () => {
     return options.map((option, index) => {
       return (
@@ -13,14 +13,10 @@ const SelectInput = ({ selectName, options, setParentState, value }) => {
     });
   };
 
-  const handleChange = (e) => {
-    setParentState(e.target.value);
-  };
-
   return (
     <SelectContainer>
       <Label>{selectName}</Label>
-      <Select value={value} onChange={handleChange}>
+      <Select value={value} {...register(`${selectName}`)}>
         {createSelectOptions()}
       </Select>
     </SelectContainer>

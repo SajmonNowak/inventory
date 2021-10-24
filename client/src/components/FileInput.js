@@ -2,15 +2,12 @@ import React from "react";
 import { Input, FileInputContainer } from "./styles/FileInput.styled";
 import { Label } from "./styles/Input.styled";
 
-const FileInput = ({ setPicture, label }) => {
-  const changePic = (e) => {
-    setPicture(e.target.files[0]);
-  };
+const FileInput = ({ register, label }) => {
 
   return (
     <FileInputContainer>
       <Label>{label}</Label>
-      <Input type="file" name="itemImage" onChange={changePic} />
+      <Input type="file" name="itemImage" {...register(`${label}`)} />
     </FileInputContainer>
   );
 };

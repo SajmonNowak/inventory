@@ -43,8 +43,23 @@ export const Heading = styled.h2`
 `;
 
 export const ButtonContainer = styled.div`
-margin-top: 40px;
-display: flex;
-justify-content: space-between;
-  
+  margin-top: 40px;
+  display: flex;
+  justify-content: space-between;
+`;
+
+export const CollectionOptions = styled.div`
+  display: flex;
+`;
+
+export const Option = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  width: 200px;
+  height: 75px;
+  margin: 20px;
+  background-color: blue;
+  border-radius: 10px;
 `;
