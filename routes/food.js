@@ -5,10 +5,10 @@ const { formatDate, formatBack } = require("../helper/formatDate");
 
 router.get("/", (req, res) => {
   Food.find()
-    .then((result) => {
-      res.json(result);
-    })
-    .catch((err) => console.log(err));
+      .then((result) => {
+        res.json(result);
+      })
+      .catch((err) => console.log(err));
 });
 
 router.get("/:id", (req, res) => {
@@ -19,14 +19,13 @@ router.get("/:id", (req, res) => {
 
 router.post("/", (req, res) => {
   const timeOfCreation = formatDate(new Date());
+
   const food = new Food({
     created: timeOfCreation,
-    name: req.body.itemName,
-    type: req.body.itemType,
-    amount: req.body.itemAmount,
-    category: req.body.itemCategory,
-    price: req.body.itemPrice,
-    id: req.body.itemName + formatBack(timeOfCreation),
+    name: req.body.Name,
+    amount: req.body.Amount,
+    category: req.body.Category,
+    price: req.body.Price,
   });
 
   food
