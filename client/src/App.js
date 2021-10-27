@@ -6,15 +6,15 @@ import Layout from "./components/Layout";
 
 function App() {
   return (
-    <Layout>
     <Router>
-      <Switch>
-        <Route path="/" exact component={Home} />
-        <Route path="/add" component={AddPage}/>
-        <Route oath="/update" component={UpdatePage}/>
-      </Switch>
+      <Layout>
+        <Switch>
+          <Route path="/" exact component={Home} />
+          <Route path="/add" component={AddPage} />
+          <Route oath="/update" component={UpdatePage} />
+        </Switch>
+      </Layout>
     </Router>
-    </Layout>
   );
 }
 

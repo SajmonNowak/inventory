@@ -9,7 +9,6 @@ export const UI = styled.div`
   grid-template-areas:
     "side top top top top top top top"
     "side  content content content content content content content";
-
 `;
 
 export const TopBar = styled.div`
@@ -27,26 +26,4 @@ export const TopBar = styled.div`
 export const ContentContainer = styled.div`
   grid-area: content;
   height: calc(100vh - 100px);
-`;
-
-export const SideBarContainer = styled.div`
-  grid-area: side;
-  min-width: 300px;
-  height: 100vh;
-  background-color: #03045e;
-  color: white;
-`;
-
-export const SideNav = styled.nav`
-`;
-
-export const Page = styled.div`
-  font-size: 20px;
-  margin: 20px;
-`;
-
-export const Heading = styled.div`
-  font-size: 24px;
-  margin: 20px;
-  height: 200px;
 `;

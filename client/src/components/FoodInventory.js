@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import {
   Amount,
@@ -20,16 +20,15 @@ import CommandNav from "./CommandNav";
 import placeholder from "../data/placeholder.png";
 
 const FoodInventory = () => {
-    const [foodInventory, setFoodInventory] = useState([]);
-    const [render, reRenderHome] = useState(0);
-  
-    useEffect(() => {
-      axios.get("/food").then((resp) => {
-        let data = resp.data;
-        setFoodInventory(data);
-      });
-    }, [render]);
+  const [foodInventory, setFoodInventory] = useState([]);
+  const [render, reRenderHome] = useState(0);
 
+  useEffect(() => {
+    axios.get("/food").then((resp) => {
+      let data = resp.data;
+      setFoodInventory(data);
+    });
+  }, [render]);
 
   return (
     <InventoryTable>

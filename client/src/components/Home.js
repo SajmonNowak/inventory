@@ -5,12 +5,11 @@ import { Link } from "react-router-dom";
 import FoodInventory from "./FoodInventory";
 import ClothesInventory from "./ClothesInventory";
 
-
 const Home = () => {
   return (
     <MainPage>
       <FoodInventory />
-      <ClothesInventory/>
+      <ClothesInventory />
 
       <Link to="/add">
         <Button primary>Add Items</Button>
