@@ -27,4 +27,6 @@ export const TopBar = styled.div`
 export const ContentContainer = styled.div`
   grid-area: content;
   height: calc(100vh - 100px);
+  background-color: #f8f9fa;
+  overflow: auto;
 `;

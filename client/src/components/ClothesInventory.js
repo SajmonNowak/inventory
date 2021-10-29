@@ -1,5 +1,5 @@
 import React from "react";
-import { InventoryTable } from "./styles/Home.styled";
+import { InventoryTable } from "./styles/Inventory.styled";
 
 const ClothesInventory = () => {
   return <InventoryTable></InventoryTable>;

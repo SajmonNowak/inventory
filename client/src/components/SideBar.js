@@ -22,11 +22,11 @@ const SideBar = () => {
         <Name>Inventory App</Name>
       </Heading>
       <SideNav>
-        <NavItem to="/">
+        <NavItem to="/food">
           <ClothesIcon className="icon" />
           <PageName>Food</PageName>
         </NavItem>
-        <NavItem>
+        <NavItem to="/clothes">
           <FoodIcon className="icon" />
           <PageName>Clothes</PageName>{" "}
         </NavItem>

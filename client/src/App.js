@@ -3,15 +3,18 @@ import AddPage from "./components/AddPage";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import UpdatePage from "./components/UpdatePage";
 import Layout from "./components/Layout";
+import FoodInventory from "./components/FoodInventory";
+import ClothesInventory from "./components/ClothesInventory";
 
 function App() {
   return (
     <Router>
       <Layout>
         <Switch>
-          <Route path="/" exact component={Home} />
+          <Route path="/food" component={FoodInventory} />
+          <Route path="/inventory" component={ClothesInventory} />
           <Route path="/add" component={AddPage} />
-          <Route oath="/update" component={UpdatePage} />
+          <Route path="/update" component={UpdatePage} />
         </Switch>
       </Layout>
     </Router>

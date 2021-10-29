@@ -1,20 +1,56 @@
 import styled from "styled-components";
 
-export const MainPage = styled.div`
+export const PageContainer = styled.div`
+  height: 100%;
+  display: flex;
+  justify-items: center;
+  align-items: center;
+`;
+
+export const InventoryContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #f8f9fa;
-  z-index: 1;
+  max-width: 1440px;
+  height: 80%;
+  margin: auto;
+`;
+
+export const ScrollBarContainer = styled.div`
+  overflow: hidden;
+  z-index: 99;
   height: 100%;
-  overflow: auto;
+
+  &:hover {
+    overflow: overlay;
+  }
+
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background-color: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: #d6dee1;
+    border-radius: 20px;
+    background-clip: content-box;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: #a8bbbf;
+  }
 `;
 
 export const InventoryTable = styled.div`
   display: flex;
   flex-direction: column;
-  width: 80%;
-  margin-top: 50px;
+  z-index: 98;
+
+  &:hover {
+  }
 `;
 
 export const Item = styled.div`
@@ -22,7 +58,7 @@ export const Item = styled.div`
   display: flex;
   align-items: center;
   background-color: ${({ odd }) => (!odd ? "#E2EAFC" : "#EDF2FB")};
-  height: 100px;
+  min-height: 60px;
   margin: 1px;
   border: 1px solid;
   border-radius: 15px;
@@ -62,7 +98,7 @@ export const Created = styled.div`
   min-width: 200px;
 `;
 
-export const ItemDescription = styled(Item)`
+export const Description = styled(Item)`
   background-color: black;
   color: white;
   font-weight: bold;

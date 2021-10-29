@@ -1,21 +1,21 @@
 import React, { useState, useEffect } from "react";
-import { MainPage } from "./styles/Home.styled";
+import { MainPage } from "./styles/Inventory.styled";
 import { Button } from "./styles/Button.styled";
 import { Link } from "react-router-dom";
 import FoodInventory from "./FoodInventory";
 import ClothesInventory from "./ClothesInventory";
 
-const Home = () => {
-  return (
-    <MainPage>
-      <FoodInventory />
-      <ClothesInventory />
+// const Home = () => {
+//   return (
+//     // <MainPage>
+//     //   <FoodInventory />
+//     //   <ClothesInventory />
 
-      <Link to="/add">
-        <Button primary>Add Items</Button>
-      </Link>
-    </MainPage>
-  );
-};
+//     //   <Link to="/add">
+//     //     <Button primary>Add Items</Button>
+//     //   </Link>
+//     // </MainPage>
+//   );
+// };
 
-export default Home;
+// export default Home;

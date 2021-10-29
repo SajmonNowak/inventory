@@ -38,12 +38,12 @@ const AddPage = () => {
         });
       }
 
-      history.push("/");
+      history.push("/food");
     }
   };
 
   const handleCancel = () => {
-    history.push("/");
+    history.push("/food");
   };
 
   return (
