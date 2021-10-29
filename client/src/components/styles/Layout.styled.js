@@ -21,6 +21,7 @@ export const TopBar = styled.div`
   justify-content: center;
   font-size: 32px;
   font-weight: bold;
+  z-index: 98;
 `;
 
 export const ContentContainer = styled.div`

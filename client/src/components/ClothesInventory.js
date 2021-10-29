@@ -1,11 +1,8 @@
-import React from 'react'
+import React from "react";
+import { InventoryTable } from "./styles/Home.styled";
 
 const ClothesInventory = () => {
-    return (
-        <div>
-            
-        </div>
-    )
-}
+  return <InventoryTable></InventoryTable>;
+};
 
-export default ClothesInventory
+export default ClothesInventory;
