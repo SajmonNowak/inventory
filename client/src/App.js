@@ -12,7 +12,7 @@ function App() {
       <Layout>
         <Switch>
           <Route path="/food" component={FoodInventory} />
-          <Route path="/inventory" component={ClothesInventory} />
+          <Route path="/clothes" component={ClothesInventory}/>
           <Route path="/add" component={AddPage} />
           <Route path="/update" component={UpdatePage} />
         </Switch>

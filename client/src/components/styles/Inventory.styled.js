@@ -27,7 +27,6 @@ export const ScrollBarContainer = styled.div`
   }
 
   ::-webkit-scrollbar {
-    
     width: 10px;
   }
 
@@ -104,6 +103,24 @@ export const Description = styled(Item)`
   background-color: black;
   color: white;
   font-weight: bold;
+`;
+
+export const Size = styled.div`
+  min-width: 100px;
+`;
+
+export const ColorContainer = styled.div`
+  min-width: 100px;
+`;
+
+export const Color = styled.div`
+  margin-left: ${(props) => (props.color === "Different" ? "0px" : "12px")};
+  height: 15px;
+  width: 15px;
+  border-radius: 50%;
+  display: inline-block;
+  background-color: ${(props) =>
+    props.color === "Different" ? "transparent" : props.color};
 `;
 
 export const ImageContainer = styled.div`

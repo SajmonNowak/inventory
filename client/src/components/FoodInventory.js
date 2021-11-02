@@ -39,7 +39,6 @@ const FoodInventory = () => {
           <ItemName>Name</ItemName>
           <ImageContainer>Image</ImageContainer>
           <Amount>Amount</Amount>
-          <Type>Type</Type>
           <Category>Category</Category>
           <Price>Price</Price>
           <Total>Total</Total>
@@ -63,7 +62,6 @@ const FoodInventory = () => {
                     />
                   </ImageContainer>
                   <Amount>{item.amount}</Amount>
-                  <Type>{item.type}</Type>
                   <Category>{item.category}</Category>
                   <Price>{item.price}</Price>
                   <Total>
