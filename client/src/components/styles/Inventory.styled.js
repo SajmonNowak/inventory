@@ -20,12 +20,14 @@ export const ScrollBarContainer = styled.div`
   overflow: hidden;
   z-index: 99;
   height: 100%;
+  padding: 0px 10px;
 
   &:hover {
     overflow: overlay;
   }
 
   ::-webkit-scrollbar {
+    
     width: 10px;
   }
 
