@@ -70,6 +70,7 @@ const FoodInventory = () => {
                   <Created>{item.created.split(" ")[0]}</Created>
                   <CommandNav
                     item={item}
+                    inventory="food"
                     reRenderHome={() => reRenderHome(render + 1)}
                   />
                 </Item>

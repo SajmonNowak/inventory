@@ -67,6 +67,11 @@ export const Item = styled.div`
   &:hover {
     border: 1px solid #012a4a;
   }
+
+  .center{
+    padding-left: 25px;
+  }
+
 `;
 
 export const ItemName = styled.div`
@@ -100,7 +105,7 @@ export const Created = styled.div`
 `;
 
 export const Description = styled(Item)`
-  background-color: black;
+  background-color: #01022d;
   color: white;
   font-weight: bold;
 `;

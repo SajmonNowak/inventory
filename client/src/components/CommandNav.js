@@ -11,12 +11,12 @@ import {
 import { useHistory } from "react-router-dom";
 import useToggle from "./hooks/useToggle";
 
-const CommandNav = ({ item, reRenderHome }) => {
+const CommandNav = ({ item, reRenderHome, inventory }) => {
   const [open, toggle] = useToggle(null);
   let history = useHistory();
   const handleDelete = () => {
     axios
-      .delete("/food", {
+      .delete(`/${inventory}`, {
         data: item,
       })
       .then((answer) => {
