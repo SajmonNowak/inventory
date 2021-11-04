@@ -17,21 +17,24 @@ const AddPage = () => {
   const [collection, setCollection] = useState();
   let history = useHistory();
 
-  const addToDB = async (data) => {
-    const response = await axios.post(`/${collection}`, data).catch((err) => {
-      let allErrorsObj = err.response.data.errors;
-      let ErrorObj = [...Object.values(allErrorsObj)];
-      let messages = new Array(ErrorObj.map((err) => err.message));
-      setMessage(messages);
-    });
+  const addToDB = async (formData) => {
+    const response = await axios
+      .post(`/${collection}`, formData)
+      .catch((err) => {
+        let allErrorsObj = err.response.data.errors;
+        let ErrorObj = [...Object.values(allErrorsObj)];
+        let messages = new Array(ErrorObj.map((err) => err.message));
+        setMessage(messages);
+      });
 
     if (response && response.status === 201) {
-      if (data.Image.length > 0) {
+      if (formData.Image.length > 0) {
+        formData._id = response.data;
         const imgData = new FormData();
-        imgData.append("itemImage", data.Image[0]);
-        imgData.append("itemName", data.Name);
+        imgData.append("itemImage", formData.Image[0]);
+        imgData.append("_id", formData._id);
 
-        axios.post("/upload", imgData, {
+        axios.post(`/upload/${collection}`, imgData, {
           headers: {
             "Content-Type": "multipart/form-data",
           },

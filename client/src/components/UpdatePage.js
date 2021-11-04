@@ -1,40 +1,28 @@
 import axios from "axios";
 import React, { useState } from "react";
-import SelectInput from "./SelectInput";
-import {
-  AddPageContainer,
-  Form,
-  NumberInputContainer,
-} from "./styles/AddPage.styled";
-import { Button } from "./styles/Button.styled";
-import TextInput from "./TextInput";
+import { AddPageContainer } from "./styles/AddPage.styled";
 import { useHistory } from "react-router-dom";
+import { useForm } from "react-hook-form";
+import UpdateFood from "./UpdateFood";
+import UpdateClothes from "./UpdateClothes";
 
 const UpdatePage = (props) => {
   const data = props.location.state.data;
-  const history = useHistory();
-  const [name, setName] = useState(data.name);
-  const [category, setCategory] = useState(data.category);
-  const [type, setType] = useState(data.type);
-  const [price, setPrice] = useState(data.price);
-  const [amount, setAmount] = useState(data.amount);
+  const [inventory, setInventory] = useState(data.size ? "clothes" : "food");
 
-  const handleUpdate = async (e) => {
-    e.preventDefault();
-    let response = await axios
-      .put("/food", {
-        _id: data._id,
-        itemName: name,
-        itemCategory: category,
-        itemType: type,
-        itemPrice: price,
-        itemAmount: amount,
-      })
-      .catch((err) => {
-        console.log(err.response);
-      });
+  const { register, handleSubmit } = useForm();
+  const history = useHistory();
+
+  const updateDB = async (formData) => {
+    formData._id = data._id;
+    let response = await axios.put(`${inventory}`, formData).catch((err) => {
+      console.log(err.response);
+    });
 
     if (response && response.status === 201) {
+      if (formData.Image) {
+        axios.put("/upload");
+      }
       history.push("/");
     }
   };
@@ -42,44 +30,22 @@ const UpdatePage = (props) => {
   return (
     <AddPageContainer>
       <h2> Update </h2>
-      <Form>
-        <TextInput
-          value={name}
-          inputName="Name"
-          setParentState={setName}
+      {inventory === "food" && (
+        <UpdateFood
+          handleSubmit={handleSubmit}
+          register={register}
+          updateDB={updateDB}
+          data={data}
         />
-        <SelectInput
-          value={type}
-          selectName="Type"
-          options={["Food", "Nonfood"]}
-          setParentState={setType}
+      )}
+      {inventory === "clothes" && (
+        <UpdateClothes
+          handleSubmit={handleSubmit}
+          register={register}
+          updateDB={updateDB}
+          data={data}
         />
-        <SelectInput
-          value={category}
-          selectName="Category"
-          options={["Fruit", "Vegetable", "Meat", "Sweets", "Drink"]}
-          setParentState={setCategory}
-        />
-        <NumberInputContainer>
-          <TextInput
-            value={price}
-            inputName="Price"
-            min="0,01"
-            step="0,01"
-            setParentState={setPrice}
-          />
-          <div className="extraMargin"></div>
-          <TextInput
-            value={amount}
-            inputName="Amount"
-            min="1"
-            setParentState={setAmount}
-          />
-        </NumberInputContainer>
-        <Button type="submit" onClick={handleUpdate}>
-          Update Item
-        </Button>
-      </Form>
+      )}
     </AddPageContainer>
   );
 };

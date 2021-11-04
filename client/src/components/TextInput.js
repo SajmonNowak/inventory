@@ -1,21 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import { InputContainer, Label, Input } from "./styles/Input.styled";
 
-const TextInput = ({
-  inputName,
-  setParentState,
-  min,
-  step,
-  value,
-  register,
-}) => {
-  const [state, setState] = useState();
-
-  const handleChange = (e) => {
-    setState(e.target.value);
-    setParentState(e.target.value);
-  };
-
+const TextInput = ({ inputName, min, step, value, register }) => {
   return (
     <InputContainer>
       <Label>{inputName}</Label>
@@ -25,7 +11,7 @@ const TextInput = ({
         type={min ? "number" : "text"}
         min={min ? min : undefined}
         step={step ? step : undefined}
-        value={value}
+        defaultValue={value}
       />
     </InputContainer>
   );

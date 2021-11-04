@@ -53,7 +53,6 @@ const ClothesInventory = () => {
       default:
         icon = <FaTshirt />;
     }
-    console.log(icon);
     return icon;
   };
 

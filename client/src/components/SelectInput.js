@@ -16,7 +16,7 @@ const SelectInput = ({ selectName, options, register, value }) => {
   return (
     <SelectContainer>
       <Label>{selectName}</Label>
-      <Select value={value} {...register(`${selectName}`)}>
+      <Select defaultValue={value} {...register(`${selectName}`)}>
         {createSelectOptions()}
       </Select>
     </SelectContainer>

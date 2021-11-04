@@ -27,12 +27,11 @@ router.post("/", (req, res) => {
     price: req.body.Price,
     color: req.body.Color,
     size: req.body.Size,
-    id: req.body.itemName + formatBack(timeOfCreation),
   });
 
   clothes
     .save()
-    .then((answer) => res.status(201).send("Successfully created Item"))
+    .then((result) => res.status(201).send(result._id))
     .catch((err) => {
       res.status(400).send(err);
     });
@@ -46,11 +45,12 @@ router.delete("/", (req, res) => {
 
 router.put("/", (req, res) => {
   const changes = {
-    name: req.body.itemName,
-    price: req.body.itemPrice,
-    amount: req.body.itemAmount,
-    category: req.body.itemCategory,
-    type: req.body.itemType,
+    name: req.body.Name,
+    price: req.body.Price,
+    amount: req.body.Amount,
+    category: req.body.Category,
+    size: req.body.Size,
+    color: req.body.Color,
   };
 
   Clothes.findByIdAndUpdate(req.body._id, changes)

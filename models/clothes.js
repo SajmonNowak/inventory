@@ -25,6 +25,7 @@ const clothesSchema = new Schema({
   },
   price: Number,
   created: String,
+  imgPath: String,
 });
 
 const Clothes = mongoose.model("clothes", clothesSchema);
