@@ -5,7 +5,6 @@ import {
   InventoryTable,
   Description,
   ItemName,
-  Type,
   Price,
   Total,
   Item,
@@ -24,22 +23,34 @@ import placeholder from "../data/placeholder.png";
 const FoodInventory = () => {
   const [foodInventory, setFoodInventory] = useState([]);
   const [render, reRenderHome] = useState(0);
+  const [sortSelection, setSortSelection] = useState("name");
 
+  const sortDataAfter = (data, selection) => {
+    const sortedData = data.sort(function(a, b){
+      const textA = a[selection].toUpperCase();
+      const textB = b[selection].toUpperCase();
+      return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;
+    });
+    console.log(sortedData)
+    return sortedData;
+  }
+  
   useEffect(() => {
     axios.get("/food").then((resp) => {
       let data = resp.data;
-      setFoodInventory(data);
+      const sortedData = sortDataAfter(data, sortSelection);
+      setFoodInventory(sortedData);
     });
-  }, [render]);
+  }, [render, sortSelection]);
 
   return (
     <PageContainer>
       <InventoryContainer>
         <Description>
-          <ItemName>Name</ItemName>
+          <ItemName onClick={() => setSortSelection("name")}>Name</ItemName>
           <ImageContainer>Image</ImageContainer>
           <Amount>Amount</Amount>
-          <Category>Category</Category>
+          <Category onClick={() => setSortSelection("category")}>Category</Category>
           <Price>Price</Price>
           <Total>Total</Total>
           <Created>Created</Created>
