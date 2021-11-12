@@ -23,7 +23,7 @@ import placeholder from "../data/placeholder.png";
 const FoodInventory = () => {
   const [foodInventory, setFoodInventory] = useState([]);
   const [render, reRenderHome] = useState(0);
-  const [sortSelection, setSortSelection] = useState("name");
+  const [sortSelection, setSortSelection] = useState("date");
 
   const sortDataAfter = (data, selection) => {
     let sortedData = data;
@@ -35,7 +35,13 @@ const FoodInventory = () => {
       return a < b ? -1 : a > b ? 1 : 0;
     });
   } else {
-     sortedData = data.sort((a, b) =>  a[selection] - b[selection] )
+    sortedData = data.sort(function(a, b) {
+      if(selection === "date"){
+        a = new Date(a[selection]);
+        b = new Date(b[selection]);
+      }
+      
+      return a[selection] - b[selection]});
   };
   return sortedData;
 }
@@ -60,7 +66,7 @@ const FoodInventory = () => {
           </Category>
           <Price onClick={() => setSortSelection("price")}>Price{sortSelection === "price" ? <SortIcon active/> : <SortIcon/> }</Price>
           <Total>Total</Total>
-          <Created>Created</Created>
+          <Created onClick={() => setSortSelection("date")}>Created{sortSelection === "date" ? <SortIcon active/> : <SortIcon/> }</Created>
         </Description>
         <ScrollBarContainer>
           <InventoryTable>
