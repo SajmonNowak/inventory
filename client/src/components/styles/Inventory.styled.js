@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import {FaSortDown} from "react-icons/fa"
 
 export const PageContainer = styled.div`
   height: 100%;
@@ -140,4 +141,8 @@ export const ImageContainer = styled.div`
 export const Image = styled.img`
   width: 50px;
   height: 100%;
+`;
+
+export const SortIcon = styled(FaSortDown)`
+  color: ${({active}) => active ? "#2b60ff" : "white" };
 `;

@@ -15,8 +15,8 @@ import {
   InventoryContainer,
   ScrollBarContainer,
   PageContainer,
+  SortIcon
 } from "./styles/Inventory.styled";
-
 import CommandNav from "./CommandNav";
 import placeholder from "../data/placeholder.png";
 
@@ -26,15 +26,20 @@ const FoodInventory = () => {
   const [sortSelection, setSortSelection] = useState("name");
 
   const sortDataAfter = (data, selection) => {
-    const sortedData = data.sort(function(a, b){
-      const textA = a[selection].toUpperCase();
-      const textB = b[selection].toUpperCase();
-      return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;
+    let sortedData = data;
+    if ( selection === "name" || selection === "category") {
+     sortedData = data.sort(function (a, b) {
+        a = a[selection].toUpperCase();
+        b = b[selection].toUpperCase();
+
+      return a < b ? -1 : a > b ? 1 : 0;
     });
-    console.log(sortedData)
-    return sortedData;
-  }
-  
+  } else {
+     sortedData = data.sort((a, b) =>  a[selection] - b[selection] )
+  };
+  return sortedData;
+}
+
   useEffect(() => {
     axios.get("/food").then((resp) => {
       let data = resp.data;
@@ -47,11 +52,13 @@ const FoodInventory = () => {
     <PageContainer>
       <InventoryContainer>
         <Description>
-          <ItemName onClick={() => setSortSelection("name")}>Name</ItemName>
+          <ItemName onClick={() => setSortSelection("name")}>Name {sortSelection === "name" ? <SortIcon active/> : <SortIcon/> }</ItemName>
           <ImageContainer>Image</ImageContainer>
-          <Amount>Amount</Amount>
-          <Category onClick={() => setSortSelection("category")}>Category</Category>
-          <Price>Price</Price>
+          <Amount onClick={() => setSortSelection("amount")}>Amount {sortSelection === "amount" ? <SortIcon active/> : <SortIcon/> }</Amount>
+          <Category onClick={() => setSortSelection("category")}>
+            Category{sortSelection === "category" ? <SortIcon active/> : <SortIcon/> }
+          </Category>
+          <Price onClick={() => setSortSelection("price")}>Price{sortSelection === "price" ? <SortIcon active/> : <SortIcon/> }</Price>
           <Total>Total</Total>
           <Created>Created</Created>
         </Description>
