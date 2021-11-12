@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import {FaSortDown} from "react-icons/fa"
+import { FaSortDown } from "react-icons/fa";
 
 export const PageContainer = styled.div`
   height: 100%;
@@ -65,14 +65,15 @@ export const Item = styled.div`
   border: 1px solid;
   border-radius: 15px;
   border-color: ${({ odd }) => (!odd ? "white" : "lightgrey")};
+  color: black;
+
   &:hover {
     border: 1px solid #012a4a;
   }
 
-  .center{
+  .center {
     padding-left: 25px;
   }
-
 `;
 
 export const ItemName = styled.div`
@@ -139,10 +140,9 @@ export const ImageContainer = styled.div`
 `;
 
 export const Image = styled.img`
-  width: 50px;
   height: 100%;
 `;
 
 export const SortIcon = styled(FaSortDown)`
-  color: ${({active}) => active ? "#2b60ff" : "white" };
+  color: ${({ active }) => (active ? "#2b60ff" : "white")};
 `;

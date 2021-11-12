@@ -48,8 +48,8 @@ const AddClothesComponent = ({
       <NumberInputContainer>
         <TextInput
           inputName="Price"
-          min="0,01"
-          step="0,01"
+          min="0.01"
+          step="0.01"
           register={register}
         />
         <div className="extraMargin"></div>

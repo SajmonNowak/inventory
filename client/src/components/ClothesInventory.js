@@ -25,7 +25,6 @@ import { GiArmoredPants } from "react-icons/gi";
 import { GiConverseShoe } from "react-icons/gi";
 import { BsSunglasses } from "react-icons/bs";
 import { GiMonclerJacket } from "react-icons/gi";
-
 import CommandNav from "./CommandNav";
 import placeholder from "../data/placeholder.png";
 
@@ -72,13 +71,14 @@ const ClothesInventory = () => {
         return a < b ? -1 : a > b ? 1 : 0;
       });
     } else {
-      sortedData = data.sort(function(a, b) {
-        if(selection === "date"){
+      sortedData = data.sort(function (a, b) {
+        if (selection === "date") {
           a = new Date(a[selection]);
           b = new Date(b[selection]);
         }
-        
-        return a[selection] - b[selection]});
+
+        return a[selection] - b[selection];
+      });
     }
     return sortedData;
   };
@@ -95,21 +95,32 @@ const ClothesInventory = () => {
     <PageContainer>
       <InventoryContainer>
         <Description>
-          <ItemName onClick={() => setSortSelection("name")}>Name {sortSelection === "name" ? <SortIcon active/> : <SortIcon />}</ItemName>
+          <ItemName onClick={() => setSortSelection("name")}>
+            Name {sortSelection === "name" ? <SortIcon active /> : <SortIcon />}
+          </ItemName>
           <ImageContainer>Image</ImageContainer>
-          <Amount onClick={() => setSortSelection("amount")}>Amount {sortSelection === "amount" ? <SortIcon active/> : <SortIcon />}</Amount>
+          <Amount onClick={() => setSortSelection("amount")}>
+            Amount{" "}
+            {sortSelection === "amount" ? <SortIcon active /> : <SortIcon />}
+          </Amount>
           <Size>Size</Size>
           <ColorContainer onClick={() => setSortSelection("color")}>
             Color
-            {sortSelection === "color" ? <SortIcon active/> : <SortIcon />}
+            {sortSelection === "color" ? <SortIcon active /> : <SortIcon />}
           </ColorContainer>
           <Category onClick={() => setSortSelection("category")}>
             Category
-            {sortSelection === "category" ? <SortIcon active/> : <SortIcon />}
+            {sortSelection === "category" ? <SortIcon active /> : <SortIcon />}
           </Category>
-          <Price onClick={() => setSortSelection("price")}>Price {sortSelection === "price" ? <SortIcon active/> : <SortIcon />}</Price>
+          <Price onClick={() => setSortSelection("price")}>
+            Price{" "}
+            {sortSelection === "price" ? <SortIcon active /> : <SortIcon />}
+          </Price>
           <Total>Total</Total>
-          <Created onClick={() => setSortSelection("date")}>Created{sortSelection === "date" ? <SortIcon active/> : <SortIcon />}</Created>
+          <Created onClick={() => setSortSelection("date")}>
+            Created
+            {sortSelection === "date" ? <SortIcon active /> : <SortIcon />}
+          </Created>
         </Description>
         <ScrollBarContainer>
           <InventoryTable>
@@ -138,9 +149,9 @@ const ClothesInventory = () => {
                   <Category className="center">
                     {getIcon(item.category)}
                   </Category>
-                  <Price>{item.price}</Price>
+                  <Price>{item.price}€</Price>
                   <Total>
-                    {Math.round(item.price * item.amount * 100) / 100}
+                    {Math.round(item.price * item.amount * 100) / 100}€
                   </Total>
                   <Created>{item.created.split(" ")[0]}</Created>
                   <CommandNav
