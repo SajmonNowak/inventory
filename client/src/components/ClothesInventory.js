@@ -18,6 +18,7 @@ import {
   Color,
   ColorContainer,
   Size,
+  SortIcon,
 } from "./styles/Inventory.styled";
 import { FaTshirt } from "react-icons/fa";
 import { GiArmoredPants } from "react-icons/gi";
@@ -30,6 +31,7 @@ import placeholder from "../data/placeholder.png";
 
 const ClothesInventory = () => {
   const [clothesInventory, setClothesInventory] = useState([]);
+  const [sortSelection, setSortSelection] = useState();
   const [render, reRenderHome] = useState(0);
 
   const getIcon = (category) => {
@@ -56,24 +58,50 @@ const ClothesInventory = () => {
     return icon;
   };
 
+  const sortDataAfter = (data, selection) => {
+    let sortedData = data;
+    if (
+      selection === "name" ||
+      selection === "category" ||
+      selection === "color"
+    ) {
+      sortedData = data.sort(function (a, b) {
+        a = a[selection].toUpperCase();
+        b = b[selection].toUpperCase();
+
+        return a < b ? -1 : a > b ? 1 : 0;
+      });
+    } else {
+      sortedData = data.sort((a, b) => a[selection] - b[selection]);
+    }
+    return sortedData;
+  };
+
   useEffect(() => {
     axios.get("/clothes").then((resp) => {
       let data = resp.data;
-      setClothesInventory(data);
+      const sortedData = sortDataAfter(data, sortSelection);
+      setClothesInventory(sortedData);
     });
-  }, [render]);
+  }, [render, sortSelection]);
 
   return (
     <PageContainer>
       <InventoryContainer>
         <Description>
-          <ItemName>Name</ItemName>
+          <ItemName onClick={() => setSortSelection("name")}>Name {sortSelection === "name" ? <SortIcon active/> : <SortIcon />}</ItemName>
           <ImageContainer>Image</ImageContainer>
-          <Amount>Amount</Amount>
+          <Amount onClick={() => setSortSelection("amount")}>Amount {sortSelection === "amount" ? <SortIcon active/> : <SortIcon />}</Amount>
           <Size>Size</Size>
-          <ColorContainer>Color</ColorContainer>
-          <Category>Category</Category>
-          <Price>Price</Price>
+          <ColorContainer onClick={() => setSortSelection("color")}>
+            Color
+            {sortSelection === "color" ? <SortIcon active/> : <SortIcon />}
+          </ColorContainer>
+          <Category onClick={() => setSortSelection("category")}>
+            Category
+            {sortSelection === "category" ? <SortIcon active/> : <SortIcon />}
+          </Category>
+          <Price onClick={() => setSortSelection("price")}>Price {sortSelection === "price" ? <SortIcon active/> : <SortIcon />}</Price>
           <Total>Total</Total>
           <Created>Created</Created>
         </Description>
