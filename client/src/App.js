@@ -16,6 +16,7 @@ function App() {
           <Route path="/add" component={AddPage} />
           <Route path="/update" component={UpdatePage} />
           <Route path="/food/:id" component={ItemModal} />
+          <Route path="/clothes/:id" component={ItemModal} />
         </Switch>
       </Layout>
     </Router>

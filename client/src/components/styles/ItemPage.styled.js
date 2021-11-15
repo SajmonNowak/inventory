@@ -13,13 +13,17 @@ export const Modal = styled.div`
   align-items: center;
 `;
 
-export const ContentContainer = styled.div`
+export const Container = styled.div`
   min-width: 800px;
-  height: 500px;
+  min-height: 500px;
   background-color: white;
   padding: 40px;
   position: relative;
+`;
+
+export const Content = styled.div`
   display: flex;
+  padding: 20px 0 50px 0;
 `;
 
 export const ImageContainer = styled.div`
@@ -32,8 +36,7 @@ export const ImageContainer = styled.div`
 
 export const ButtonContainer = styled.div`
   position: absolute;
-  bottom: 0;
-  right: 0;
+  bottom: 0px;
   display: flex;
   width: 100%;
   padding: 20px;

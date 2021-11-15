@@ -3,7 +3,7 @@ import ReactDom from "react-dom";
 import { useHistory, useLocation} from "react-router";
 import {
   Modal,
-  ContentContainer,
+  Container,
   ButtonContainer,
   MarginElement,
 } from "./styles/ItemPage.styled";
@@ -16,7 +16,7 @@ const ItemModal = (props) => {
 
   return ReactDom.createPortal(
     <Modal onClick={() => history.push("/food")}>
-      <ContentContainer
+      <Container
         onClick={(e) => {
           e.preventDefault();
           e.stopPropagation();
@@ -29,7 +29,7 @@ const ItemModal = (props) => {
           <MarginElement />
           <Button>Delete</Button>
         </ButtonContainer>
-      </ContentContainer>
+      </Container>
     </Modal>,
     document.getElementById("portal")
   );
