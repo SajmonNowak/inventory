@@ -13,8 +13,9 @@ router.get("/", (req, res) => {
 
 router.get("/:id", (req, res) => {
   Food.findById(req.params.id).then((result) => {
+    console.log(result);
     res.json(result);
-  });
+  }).catch((err) => console.log(err));
 });
 
 router.post("/", (req, res) => {

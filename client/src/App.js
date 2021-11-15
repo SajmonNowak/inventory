@@ -1,4 +1,3 @@
-import Home from "./components/Home";
 import AddPage from "./components/AddPage";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Layout from "./components/Layout";
