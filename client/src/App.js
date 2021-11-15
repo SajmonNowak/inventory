@@ -17,7 +17,7 @@ function App() {
           <Route path="/clothes" exact component={ClothesInventory} />
           <Route path="/add" component={AddPage} />
           <Route path="/statistics" component={StatisticsPage} />
-          <Route path="/update" component={UpdatePage} />
+          <Route path="/update/:collection/:id" component={UpdatePage} />
           <Route path="/food/:id" component={ItemModal} />
           <Route path="/clothes/:id" component={ItemModal} />
         </Switch>

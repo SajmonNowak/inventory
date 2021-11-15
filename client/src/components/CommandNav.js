@@ -28,13 +28,13 @@ const CommandNav = ({ item, reRenderHome, inventory }) => {
 
   const openUpdate = () => {
     history.push({
-      pathname: "/update",
+      pathname: `/update/${inventory}/${item._id}`,
       state: { data: item },
     });
   };
 
   return (
-    <CommandContainer>
+    <CommandContainer onClick={(e) => {e.stopPropagation(); e.preventDefault()}}>
       <DotsIcon onClick={toggle} open={open} />
       {open && (
         <Menu>

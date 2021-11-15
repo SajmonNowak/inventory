@@ -90,7 +90,7 @@ const FoodInventory = () => {
               return (
                 <Link
                   style={{ textDecoration: "none" }}
-                  to={{ pathname: `/food/${item._id}` }}
+                  to={{ pathname: `/food/${item._id}` , data:{item}}}
                 >
                   <Item odd={key % 2 === 0} key={key} onClick={openItemPage}>
                     <ItemName>{item.name}</ItemName>

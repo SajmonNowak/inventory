@@ -14,6 +14,13 @@ const ItemModal = (props) => {
   const location = useLocation();
   const history = useHistory();
 
+
+  const openUpdate = () => {
+    history.push({
+      pathname: `/update${location.pathname}`,
+    });
+  };
+
   return ReactDom.createPortal(
     <Modal onClick={() => history.push("/food")}>
       <Container
@@ -23,9 +30,11 @@ const ItemModal = (props) => {
           e.nativeEvent.stopImmediatePropagation();
         }}
       >
-        <ItemUI pathname = {location.pathname}/>
+        <ItemUI pathname={location.pathname} />
         <ButtonContainer>
-          <Button primary>Update</Button>
+          <Button primary onClick={openUpdate}>
+            Update
+          </Button>
           <MarginElement />
           <Button>Delete</Button>
         </ButtonContainer>

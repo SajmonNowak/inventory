@@ -1,10 +1,6 @@
 import React from "react";
 import SelectInput from "./SelectInput";
-import {
-  AddPageContainer,
-  Form,
-  NumberInputContainer,
-} from "./styles/AddPage.styled";
+import { Form, NumberInputContainer } from "./styles/AddPage.styled";
 import { Button } from "./styles/Button.styled";
 import TextInput from "./TextInput";
 import FileInput from "./FileInput";
@@ -23,8 +19,8 @@ const UpdateFood = ({ register, handleSubmit, updateDB, data }) => {
         <TextInput
           value={data.price}
           inputName="Price"
-          min="0,01"
-          step="0,01"
+          min="0.01"
+          step="0.01"
           register={register}
         />
         <div className="extraMargin"></div>
