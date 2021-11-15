@@ -5,6 +5,8 @@ import FoodInventory from "./components/FoodInventory";
 import ClothesInventory from "./components/ClothesInventory";
 import UpdatePage from "./components/UpdatePage";
 import ItemModal from "./components/ItemModal";
+import StatisticsPage from "./components/StatisticsPage";
+
 
 function App() {
   return (
@@ -14,6 +16,7 @@ function App() {
           <Route path="/food" exact component={FoodInventory} />
           <Route path="/clothes" exact component={ClothesInventory} />
           <Route path="/add" component={AddPage} />
+          <Route path="/statistics" component={StatisticsPage} />
           <Route path="/update" component={UpdatePage} />
           <Route path="/food/:id" component={ItemModal} />
           <Route path="/clothes/:id" component={ItemModal} />

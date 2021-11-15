@@ -30,7 +30,7 @@ const SideBar = () => {
           <FoodIcon className="icon" />
           <PageName>Clothes</PageName>{" "}
         </NavItem>
-        <NavItem>
+        <NavItem to="/statistics">
           <ChartIcon className="icon" />
           <PageName>Statistics</PageName>
         </NavItem>

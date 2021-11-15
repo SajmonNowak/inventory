@@ -15,15 +15,12 @@ const ItemUI = ({ pathname }) => {
   const [itemData, setItemData] = useState();
 
   const getItemDataFromDB = () => {
-    console.log("asas");
     axios.get(pathname).then((response) => setItemData(response.data));
   };
 
   useEffect(() => {
     getItemDataFromDB();
   }, []);
-
-  console.log(itemData);
 
   return (
     <React.Fragment>

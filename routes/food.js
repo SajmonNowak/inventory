@@ -13,7 +13,6 @@ router.get("/", (req, res) => {
 
 router.get("/:id", (req, res) => {
   Food.findById(req.params.id).then((result) => {
-    console.log(result);
     res.json(result);
   }).catch((err) => console.log(err));
 });
@@ -50,7 +49,6 @@ router.put("/", (req, res) => {
     amount: req.body.Amount,
     category: req.body.Category,
   };
-  console.log(req.body._id);
 
   Food.findByIdAndUpdate(req.body._id, changes)
     .then((answer) => res.status(201).send("Sucess"))
