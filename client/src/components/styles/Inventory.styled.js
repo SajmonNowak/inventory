@@ -144,5 +144,6 @@ export const Image = styled.img`
 `;
 
 export const SortIcon = styled(FaSortDown)`
-  color: ${({ active }) => (active ? "#2b60ff" : "white")};
+  color: ${({ $active }) => ($active ? "#2b60ff" : "white")};
+  transform: ${({reversed}) => reversed ? "rotate(180deg)" : ""}
 `;

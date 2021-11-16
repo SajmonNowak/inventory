@@ -25,6 +25,7 @@ const FoodInventory = () => {
   const [foodInventory, setFoodInventory] = useState([]);
   const [render, reRenderHome] = useState(0);
   const [sortSelection, setSortSelection] = useState("date");
+  const [sortInReverseOrder, setSortInReverseOrder] = useState(false);
 
   const sortDataAfter = (data, selection) => {
     let sortedData = data;
@@ -45,10 +46,20 @@ const FoodInventory = () => {
         return a[selection] - b[selection];
       });
     }
+
+    sortedData = sortInReverseOrder ? sortedData.reverse() : sortedData;
+
     return sortedData;
   };
 
-  const openItemPage = () => {};
+  const handleSortClick = (prop) => {
+    if (sortSelection === prop) {
+      setSortInReverseOrder(!sortInReverseOrder);
+    } else {
+      setSortInReverseOrder(false);
+      setSortSelection(prop);
+    }
+  };
 
   useEffect(() => {
     axios.get("/food").then((resp) => {
@@ -56,32 +67,48 @@ const FoodInventory = () => {
       const sortedData = sortDataAfter(data, sortSelection);
       setFoodInventory(sortedData);
     });
-  }, [render, sortSelection]);
+  }, [render, sortSelection, sortInReverseOrder]);
 
   return (
     <PageContainer>
       <InventoryContainer>
         <Description>
-          <ItemName onClick={() => setSortSelection("name")}>
-            Name {sortSelection === "name" ? <SortIcon active /> : <SortIcon />}
+          <ItemName onClick={() => handleSortClick("name")}>
+            Name{" "}
+            <SortIcon
+              $active={sortSelection === "name"}
+              reversed={sortSelection === "name" && sortInReverseOrder ? true : false}
+            />
           </ItemName>
           <ImageContainer>Image</ImageContainer>
-          <Amount onClick={() => setSortSelection("amount")}>
+          <Amount onClick={() => handleSortClick("amount")}>
             Amount{" "}
-            {sortSelection === "amount" ? <SortIcon active /> : <SortIcon />}
+            <SortIcon
+              reversed={sortSelection ==="amount" && sortInReverseOrder ? true : false}
+              $active={sortSelection === "amount"}
+            />
           </Amount>
-          <Category onClick={() => setSortSelection("category")}>
+          <Category onClick={() => handleSortClick("category")}>
             Category
-            {sortSelection === "category" ? <SortIcon active /> : <SortIcon />}
+            {<SortIcon
+              reversed={sortSelection ==="category" && sortInReverseOrder ? true : false}
+              $active={sortSelection === "category"}
+            />}
           </Category>
-          <Price onClick={() => setSortSelection("price")}>
+          <Price onClick={() => handleSortClick("price")}>
             Price
-            {sortSelection === "price" ? <SortIcon active /> : <SortIcon />}
+            <SortIcon
+              reversed={sortSelection ==="price" && sortInReverseOrder ? true : false}
+              $active={sortSelection === "price"}
+            />
           </Price>
           <Total>Total</Total>
-          <Created onClick={() => setSortSelection("date")}>
+          <Created onClick={() => handleSortClick("date")}>
             Created
-            {sortSelection === "date" ? <SortIcon active /> : <SortIcon />}
+            <SortIcon
+              reversed={sortSelection ==="date" && sortInReverseOrder ? true : false}
+              $active={sortSelection === "date"}
+            />
           </Created>
         </Description>
         <ScrollBarContainer>
@@ -90,9 +117,10 @@ const FoodInventory = () => {
               return (
                 <Link
                   style={{ textDecoration: "none" }}
-                  to={{ pathname: `/food/${item._id}` , data:{item}}}
+                  to={{ pathname: `/food/${item._id}`, data: { item } }}
+                  key={key}
                 >
-                  <Item odd={key % 2 === 0} key={key} onClick={openItemPage}>
+                  <Item odd={key % 2 === 0}>
                     <ItemName>{item.name}</ItemName>
                     <ImageContainer>
                       <Image

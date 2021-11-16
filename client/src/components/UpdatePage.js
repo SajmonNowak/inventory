@@ -41,7 +41,7 @@ const UpdatePage = () => {
     }
 
     fetchDataFromDB();
-  }, []);
+  }, [collection, id]);
 
   return (
     <AddPageContainer>
