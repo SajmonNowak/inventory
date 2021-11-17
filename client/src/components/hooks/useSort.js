@@ -1,7 +1,7 @@
 import { useState } from "react";
 
-const useSort = (initialValue) => {
-  const [sortSelection, setSortSelection] = useState(initialValue);
+const useSort = () => {
+  const [sortSelection, setSortSelection] = useState();
   const [sortInReverseOrder, setSortInReverseOrder] = useState(false);
 
   const handleSortClick = (prop) => {

@@ -26,7 +26,7 @@ import sortDataAfter from "../helper/sortDataAfter";
 const FoodInventory = () => {
   const [render, reRenderHome] = useState(0);
   const { sortSelection, sortInReverseOrder, handleSortClick } =
-    useSort("date");
+    useSort();
   const { data: foodInventory } = useFetch("/food", render);
 
   const getSortedData = () => {
@@ -79,13 +79,13 @@ const FoodInventory = () => {
             />
           </Price>
           <Total>Total</Total>
-          <Created onClick={() => handleSortClick("date")}>
+          <Created onClick={() => handleSortClick("created")}>
             Created
             <SortIcon
               reversed={
-                sortSelection === "date" && sortInReverseOrder ? true : false
+                sortSelection === "created" && sortInReverseOrder ? true : false
               }
-              $active={sortSelection === "date"}
+              $active={sortSelection === "created"}
             />
           </Created>
         </Description>

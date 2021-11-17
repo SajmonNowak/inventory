@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
+import React, { useState } from "react";
 import {
   Amount,
   InventoryTable,
@@ -28,11 +27,14 @@ import { GiMonclerJacket } from "react-icons/gi";
 import CommandNav from "./CommandNav";
 import placeholder from "../data/placeholder.png";
 import { Link } from "react-router-dom";
+import useFetch from "./hooks/useFetch";
+import useSort from "./hooks/useSort";
+import sortDataAfter from "../helper/sortDataAfter";
 
 const ClothesInventory = () => {
-  const [clothesInventory, setClothesInventory] = useState([]);
-  const [sortSelection, setSortSelection] = useState("date");
   const [render, reRenderHome] = useState(0);
+  const { sortSelection, sortInReverseOrder, handleSortClick } = useSort();
+  const { data: clothesInventory } = useFetch("/clothes", render);
 
   const getIcon = (category) => {
     let icon = "";
@@ -58,80 +60,84 @@ const ClothesInventory = () => {
     return icon;
   };
 
-  const sortDataAfter = (data, selection) => {
-    let sortedData = data;
-    if (
-      selection === "name" ||
-      selection === "category" ||
-      selection === "color"
-    ) {
-      sortedData = data.sort(function (a, b) {
-        a = a[selection].toUpperCase();
-        b = b[selection].toUpperCase();
-
-        return a < b ? -1 : a > b ? 1 : 0;
-      });
-    } else {
-      sortedData = data.sort(function (a, b) {
-        if (selection === "date") {
-          a = new Date(a[selection]);
-          b = new Date(b[selection]);
-        }
-
-        return a[selection] - b[selection];
-      });
-    }
-    return sortedData;
+  const getSortedData = () => {
+    return sortDataAfter(clothesInventory, sortSelection, sortInReverseOrder);
   };
-
-  useEffect(() => {
-    axios.get("/clothes").then((resp) => {
-      let data = resp.data;
-      const sortedData = sortDataAfter(data, sortSelection);
-      setClothesInventory(sortedData);
-    });
-  }, [render, sortSelection]);
 
   return (
     <PageContainer>
       <InventoryContainer>
         <Description>
-          <ItemName onClick={() => setSortSelection("name")}>
-            Name {sortSelection === "name" ? <SortIcon active /> : <SortIcon />}
+          <ItemName onClick={() => handleSortClick("name")}>
+            Name{" "}
+            <SortIcon
+              reversed={
+                sortSelection === "name" && sortInReverseOrder ? true : false
+              }
+              $active={sortSelection === "name"}
+            />
           </ItemName>
           <ImageContainer>Image</ImageContainer>
-          <Amount onClick={() => setSortSelection("amount")}>
+          <Amount onClick={() => handleSortClick("amount")}>
             Amount{" "}
-            {sortSelection === "amount" ? <SortIcon active /> : <SortIcon />}
+            <SortIcon
+              reversed={
+                sortSelection === "amount" && sortInReverseOrder ? true : false
+              }
+              $active={sortSelection === "amount"}
+            />
           </Amount>
           <Size>Size</Size>
-          <ColorContainer onClick={() => setSortSelection("color")}>
+          <ColorContainer onClick={() => handleSortClick("color")}>
             Color
-            {sortSelection === "color" ? <SortIcon active /> : <SortIcon />}
+            <SortIcon
+              reversed={
+                sortSelection === "color" && sortInReverseOrder ? true : false
+              }
+              $active={sortSelection === "color"}
+            />
           </ColorContainer>
-          <Category onClick={() => setSortSelection("category")}>
+          <Category onClick={() => handleSortClick("category")}>
             Category
-            {sortSelection === "category" ? <SortIcon active /> : <SortIcon />}
+            <SortIcon
+              reversed={
+                sortSelection === "category" && sortInReverseOrder
+                  ? true
+                  : false
+              }
+              $active={sortSelection === "category"}
+            />
           </Category>
-          <Price onClick={() => setSortSelection("price")}>
+          <Price onClick={() => handleSortClick("price")}>
             Price{" "}
-            {sortSelection === "price" ? <SortIcon active /> : <SortIcon />}
+            <SortIcon
+              reversed={
+                sortSelection === "price" && sortInReverseOrder ? true : false
+              }
+              $active={sortSelection === "price"}
+            />
           </Price>
           <Total>Total</Total>
-          <Created onClick={() => setSortSelection("date")}>
+          <Created onClick={() => handleSortClick("created")}>
             Created
-            {sortSelection === "date" ? <SortIcon active /> : <SortIcon />}
+            <SortIcon
+              reversed={
+                sortSelection === "created" && sortInReverseOrder ? true : false
+              }
+              $active={sortSelection === "created"}
+            />
           </Created>
         </Description>
         <ScrollBarContainer>
           <InventoryTable>
-            {clothesInventory.map((item, key) => {
+            {getSortedData().map((item, key) => {
               return (
                 <Link
                   style={{ textDecoration: "none" }}
                   to={{ pathname: `/clothes/${item._id}` }}
+                  key={key}
                 >
-                  <Item odd={key % 2 === 0} key={key}>
+                  <Item odd={key % 2 === 0}>
                     <ItemName>{item.name}</ItemName>
                     <ImageContainer>
                       <Image
@@ -161,7 +167,7 @@ const ClothesInventory = () => {
                     <Created>{item.created.split(" ")[0]}</Created>
                     <CommandNav
                       item={item}
-                      inventory="clothes"
+                      collection="clothes"
                       reRenderHome={() => reRenderHome(render + 1)}
                     />
                   </Item>
