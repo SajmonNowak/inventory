@@ -11,12 +11,12 @@ import {
 import { useHistory } from "react-router-dom";
 import useToggle from "./hooks/useToggle";
 
-const CommandNav = ({ item, reRenderHome, inventory }) => {
+const CommandNav = ({ item, reRenderHome, collection }) => {
   const [open, toggle] = useToggle(null);
   let history = useHistory();
   const handleDelete = () => {
     axios
-      .delete(`/${inventory}`, {
+      .delete(`/${collection}`, {
         data: item,
       })
       .then((answer) => {
@@ -28,13 +28,18 @@ const CommandNav = ({ item, reRenderHome, inventory }) => {
 
   const openUpdate = () => {
     history.push({
-      pathname: `/update/${inventory}/${item._id}`,
+      pathname: `/update/${collection}/${item._id}`,
       state: { data: item },
     });
   };
 
   return (
-    <CommandContainer onClick={(e) => {e.stopPropagation(); e.preventDefault()}}>
+    <CommandContainer
+      onClick={(e) => {
+        e.stopPropagation();
+        e.preventDefault();
+      }}
+    >
       <DotsIcon onClick={toggle} open={open} />
       {open && (
         <Menu>
