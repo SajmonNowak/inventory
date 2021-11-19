@@ -137,10 +137,13 @@ export const ImageContainer = styled.div`
   width: 100px;
   height: 50px;
   margin-right: 20px;
+  padding: 2px;
 `;
 
 export const Image = styled.img`
-  height: 100%;
+width: 100%;
+height: 100%;
+object-fit: cover;
 `;
 
 export const SortIcon = styled(FaSortDown)`

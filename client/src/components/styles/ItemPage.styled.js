@@ -27,11 +27,13 @@ export const Content = styled.div`
 `;
 
 export const ImageContainer = styled.div`
-  height: 250px;
+   height: 200px;
+   width: 300px;
   margin-bottom: 40px;
   display: flex;
   justify-content: center;
   border: 2px solid;
+  z-index: 99;
 `;
 
 export const ButtonContainer = styled.div`
@@ -44,11 +46,13 @@ export const ButtonContainer = styled.div`
 `;
 
 export const LeftColumn = styled.div`
-  width: 50%;
+  min-width: 50%;
 `;
 
 export const RightColumn = styled.div`
-  width: 50%;
+  min-width: 50%;
+  display: flex;
+  justify-content: center;
 `;
 
 export const DataField = styled.div`

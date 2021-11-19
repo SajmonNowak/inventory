@@ -2,7 +2,6 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const clothesSchema = new Schema({
-  id: String,
   name: {
     type: String,
     required: true,

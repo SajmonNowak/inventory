@@ -12,7 +12,7 @@ import AddClothesComponent from "./AddClothesComponent";
 import { useForm } from "react-hook-form";
 
 const AddPage = () => {
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit, reset} = useForm({mode:"OnChange", defaultValues:{Image:""}});
   const [message, setMessage] = useState();
   const [collection, setCollection] = useState();
   let history = useHistory();
@@ -40,7 +40,7 @@ const AddPage = () => {
           },
         });
       }
-
+      reset()
       history.push("/food");
     }
   };
@@ -49,12 +49,17 @@ const AddPage = () => {
     history.push("/food");
   };
 
+const handleClick = (collection) => {
+  setCollection(collection);
+  reset()
+}
+
   return (
     <AddPageContainer>
       <Heading>What do you want to add to your inventory?</Heading>
       <CollectionOptions>
-        <Option onClick={() => setCollection("food")}>Food</Option>
-        <Option onClick={() => setCollection("clothes")}>Clothes</Option>
+        <Option onClick={() => handleClick("food")}>Food</Option>
+        <Option onClick={() => handleClick("clothes")}>Clothes</Option>
       </CollectionOptions>
       {collection === "food" && (
         <AddFoodComponent
