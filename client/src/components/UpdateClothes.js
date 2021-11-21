@@ -24,7 +24,7 @@ const UpdateClothes = ({ register, handleSubmit, updateDB, data }) => {
       <SelectInput
         value={data.color}
         selectName="Color"
-        options={["Red", "Green", "Black", "White", "Yellow", "Different"]}
+        options={["Red", "Green", "Black", "White", "Yellow", "Blue", "Purple", "Pink", "Brown", "Grey", "Orange", "Different"]}
         register={register}
       />
       <NumberInputContainer>

@@ -13,6 +13,10 @@ export const Input = styled.input`
   border-color: white;
   border-radius: 10px;
   outline: none;
+
+  &:focus {
+    border: 2px solid #01022d;
+  }
 `;
 
 export const Label = styled.label`

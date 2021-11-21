@@ -18,6 +18,7 @@ const foodSchema = new Schema({
   price: {
     type: Number,
     min: [0, "Price must be 0 or higher"],
+    required: true,
   },
   created: String,
   imgPath: String,

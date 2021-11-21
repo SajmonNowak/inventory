@@ -31,6 +31,7 @@ const UpdatePage = () => {
         });
       }
       history.push(`/${collection}`);
+      history.go(0);
     }
   };
 

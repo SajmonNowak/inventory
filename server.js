@@ -18,6 +18,5 @@ mongoose
   .catch((err) => console.log(err));
 
 app.use("/food", require("./routes/food"));
-app.use("/home", require("./routes/home"));
 app.use("/clothes", require("./routes/clothes"))
 app.use("/upload", require("./routes/upload"))

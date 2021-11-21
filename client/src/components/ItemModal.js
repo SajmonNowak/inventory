@@ -22,21 +22,19 @@ const ItemModal = (props) => {
     });
   };
 
-
   const deleteItem = () => {
     axios
       .delete(`/${collection}`, {
         data: props.location.data.item,
       })
       .then((answer) => {
-        history.push(`/${collection}`).go(0)
+        history.push(`/${collection}`).go(0);
       })
       .catch((err) => console.log(err.body));
-  }
-
+  };
 
   return ReactDom.createPortal(
-    <Modal onClick={() => history.push("/food")}>
+    <Modal onClick={() => history.push(`/${collection}`)}>
       <Container
         onClick={(e) => {
           e.preventDefault();

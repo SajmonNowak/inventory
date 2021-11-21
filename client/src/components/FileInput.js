@@ -3,7 +3,6 @@ import { Input, FileInputContainer } from "./styles/FileInput.styled";
 import { Label } from "./styles/Input.styled";
 
 const FileInput = ({ register, label }) => {
-
   return (
     <FileInputContainer>
       <Label>{label}</Label>

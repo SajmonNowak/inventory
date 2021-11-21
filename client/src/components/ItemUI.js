@@ -5,7 +5,7 @@ import {
   RightColumn,
   DataField,
   Label,
-  Content
+  Content,
 } from "./styles/ItemPage.styled";
 import placeholder from "../data/placeholder.png";
 import { Image } from "./styles/Inventory.styled";
@@ -67,7 +67,7 @@ const ItemUI = ({ pathname }) => {
               />
             </ImageContainer>
           </RightColumn>
-          </Content>
+        </Content>
       )}
     </React.Fragment>
   );

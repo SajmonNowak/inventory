@@ -22,7 +22,10 @@ const clothesSchema = new Schema({
     type: String,
     required: true,
   },
-  price: Number,
+  price: {
+    type: Number,
+    required: true,
+  },
   created: String,
   imgPath: String,
 });

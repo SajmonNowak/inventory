@@ -60,6 +60,6 @@ export const Option = styled.div`
   width: 200px;
   height: 75px;
   margin: 20px;
-  background-color: blue;
+  background-color: #01022d;
   border-radius: 10px;
 `;
