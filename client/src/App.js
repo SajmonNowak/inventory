@@ -13,6 +13,7 @@ function App() {
     <Router>
       <Layout>
         <Switch>
+        <Route path="/" exact component={FoodInventory} />
           <Route path="/food" exact component={FoodInventory} />
           <Route path="/clothes" exact component={ClothesInventory} />
           <Route path="/add" component={AddPage} />
