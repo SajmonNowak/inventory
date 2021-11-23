@@ -134,7 +134,7 @@ const ClothesInventory = () => {
               return (
                 <Link
                   style={{ textDecoration: "none" }}
-                  to={{ pathname: `/clothes/${item._id}` }}
+                  to={{ pathname: `/clothes/${item._id}`,  data: { item } }}
                   key={key}
                 >
                   <Item odd={key % 2 === 0}>

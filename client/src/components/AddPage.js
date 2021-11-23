@@ -41,7 +41,7 @@ const AddPage = () => {
         });
       }
       reset()
-      history.push("/food");
+      history.push(`/${collection}`);
     }
   };
 
