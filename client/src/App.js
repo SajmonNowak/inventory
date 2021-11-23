@@ -1,5 +1,5 @@
 import AddPage from "./components/AddPage";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { HashRouter, Switch, Route } from "react-router-dom";
 import Layout from "./components/Layout";
 import FoodInventory from "./components/FoodInventory";
 import ClothesInventory from "./components/ClothesInventory";
@@ -10,7 +10,7 @@ import StatisticsPage from "./components/StatisticsPage";
 
 function App() {
   return (
-    <Router>
+    <HashRouter>
       <Layout>
         <Switch>
         <Route path="/" exact component={FoodInventory} />
@@ -23,7 +23,7 @@ function App() {
           <Route path="/clothes/:id" component={ItemModal} />
         </Switch>
       </Layout>
-    </Router>
+    </HashRouter>
   );
 }
 
