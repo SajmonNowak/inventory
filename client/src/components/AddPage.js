@@ -29,6 +29,7 @@ const AddPage = () => {
 
     if (response && response.status === 201) {
       if (formData.Image.length > 0) {
+        console.log("adding image")
         formData._id = response.data;
         const imgData = new FormData();
         imgData.append("itemImage", formData.Image[0]);
