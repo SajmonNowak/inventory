@@ -34,8 +34,7 @@ const uploadSingleImage = upload.single("itemImage");
 router.post("/food", async (req, res) => {
   uploadSingleImage(req, res, function (err) {
     if (err) {
-      console.log(err);
-      return res.status(400).send(err.message);
+      return res.status(422).send(err.message);
     }
     Food.updateOne(
       { _id: req.body._id },
@@ -47,12 +46,20 @@ router.post("/food", async (req, res) => {
   });
 });
 
-router.post("/clothes", upload.single("itemImage"), (req, res) => {
-  Clothes.updateOne(
-    { _id: req.body._id },
-    { $set: { imgPath: req.file.path } },
-    { multi: true }
-  ).then((answer) => console.log(answer));
+router.post("/clothes", (req, res) => {
+
+  uploadSingleImage(req, res, function (err) {
+    if (err) {
+      return res.status(422).send(err.message);
+    }
+    
+    Clothes.updateOne(
+      { _id: req.body._id },
+      { $set: { imgPath: req.file.path } },
+      { multi: true }
+    ).then((answer) => console.log(answer));
+
+  })
 });
 
 module.exports = router;

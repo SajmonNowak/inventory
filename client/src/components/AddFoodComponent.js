@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import SelectInput from "./SelectInput";
 import {
   Form,
@@ -17,13 +17,22 @@ const AddFoodComponent = ({
   register,
   handleSubmit,
   handleCancel,
-  message,
+  messageArray,
 }) => {
+  const [image, setImage] = useState();
+
   const printMessages = () => {
-    const messageArray = message[0].map((m, index) => (
+    const messages = messageArray.map((m, index) => (
       <Message key={index}>{m}</Message>
     ));
-    return messageArray;
+    return messages;
+  };
+
+  const imageChange = (e) => {
+    console.log("triffere")
+    if (e.target.files && e.target.files.length > 0) {
+      setImage(e.target.files[0]);
+    }
   };
 
   return (
@@ -45,8 +54,11 @@ const AddFoodComponent = ({
         <div className="extraMargin"></div>
         <TextInput inputName="Amount" min="1" register={register} />
       </NumberInputContainer>
-      <FileInput label="Image" register={register} />
-      {message && <MessageContainer>{printMessages()}</MessageContainer>}
+      <FileInput label="Image" register={register} imageChange={imageChange} />
+      {image && (
+        <img style={{ width:"100px", height:"100px"}} src={URL.createObjectURL(image)} alt=""></img>
+      )}
+      {messageArray && <MessageContainer>{printMessages()}</MessageContainer>}
       <ButtonContainer>
         <Button onClick={handleCancel}> Cancel</Button>
         <Button type="submit" primary>

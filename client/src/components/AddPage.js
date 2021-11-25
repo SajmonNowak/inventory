@@ -16,7 +16,7 @@ const AddPage = () => {
     mode: "OnChange",
     defaultValues: { Image: "" },
   });
-  const [message, setMessage] = useState();
+  const [messageArray, setMessageArray] = useState();
   const [collection, setCollection] = useState();
   let history = useHistory();
 
@@ -26,8 +26,8 @@ const AddPage = () => {
       .catch((err) => {
         let allErrorsObj = err.response.data.errors;
         let ErrorObj = [...Object.values(allErrorsObj)];
-        let messages = new Array(ErrorObj.map((err) => err.message));
-        setMessage(messages);
+        let messages = ErrorObj.map((err) => err.message);
+        setMessageArray(messages);
       });
 
     if (response && response.status === 201) {
@@ -37,7 +37,7 @@ const AddPage = () => {
         const imgData = new FormData();
         imgData.append("itemImage", formData.Image[0]);
         imgData.append("_id", formData._id);
-
+        console.log(imgData)
         axios
           .post(`/upload/${collection}`, imgData, {
             headers: {
@@ -45,11 +45,12 @@ const AddPage = () => {
             },
           })
           .then((resp) => {
+            console.log(resp)
             reset();
             history.push(`/${collection}`);
           })
           .catch((error) => {
-            setMessage([["Please only upload Images"]]);
+            setMessageArray(["Please only upload Images"]);
           });
       } else {
         reset();
@@ -80,7 +81,7 @@ const AddPage = () => {
           handleSubmit={handleSubmit}
           addToDB={addToDB}
           handleCancel={handleCancel}
-          message={message}
+          messageArray={messageArray}
         />
       )}
       {collection === "clothes" && (
@@ -89,7 +90,7 @@ const AddPage = () => {
           handleSubmit={handleSubmit}
           addToDB={addToDB}
           handleCancel={handleCancel}
-          message={message}
+          messageArray={messageArray}
         />
       )}
     </AddPageContainer>

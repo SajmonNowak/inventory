@@ -17,13 +17,13 @@ const AddClothesComponent = ({
   register,
   handleSubmit,
   handleCancel,
-  message,
+  messageArray,
 }) => {
   const printMessages = () => {
-    const messageArray = message[0].map((m, index) => (
+    const messages = messageArray.map((m, index) => (
       <Message key={index}>{m}</Message>
     ));
-    return messageArray;
+    return messages;
   };
 
   return (
@@ -69,7 +69,7 @@ const AddClothesComponent = ({
         <TextInput inputName="Amount" min="1" register={register} />
       </NumberInputContainer>
       <FileInput label="Image" register={register} />
-      {message && <MessageContainer>{printMessages()}</MessageContainer>}
+      {messageArray && <MessageContainer>{printMessages()}</MessageContainer>}
       <ButtonContainer>
         <Button onClick={handleCancel}> Cancel</Button>
         <Button type="submit" primary>
