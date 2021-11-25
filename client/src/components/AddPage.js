@@ -38,14 +38,23 @@ const AddPage = () => {
         imgData.append("itemImage", formData.Image[0]);
         imgData.append("_id", formData._id);
 
-        const resp = await axios.post(`/upload/${collection}`, imgData, {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-        });
+        axios
+          .post(`/upload/${collection}`, imgData, {
+            headers: {
+              "Content-Type": "multipart/form-data",
+            },
+          })
+          .then((resp) => {
+            reset();
+            history.push(`/${collection}`);
+          })
+          .catch((error) => {
+            setMessage([["Please only upload Images"]]);
+          });
+      } else {
+        reset();
+        history.push(`/${collection}`);
       }
-      reset();
-      history.push(`/${collection}`);
     }
   };
 
