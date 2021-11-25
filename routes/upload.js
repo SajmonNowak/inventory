@@ -17,13 +17,15 @@ const upload = multer({
   storage: storage,
 });
 
+
+
 router.post("/food", upload.single("itemImage"), (req, res) => {
   console.log("adding image backened")
   Food.updateOne(
     { _id: req.body._id },
     { $set: { imgPath: req.file.path } },
     { multi: true }
-  ).then((answer) => console.log(answer)).catch((error) => console.log(error));
+  ).then((answer) => res.status(201).send(answer)).catch((error) => res.status(409).send(error))
 });
 
 router.post("/clothes", upload.single("itemImage"), (req, res) => {

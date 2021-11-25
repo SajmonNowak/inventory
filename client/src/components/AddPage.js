@@ -12,7 +12,10 @@ import AddClothesComponent from "./AddClothesComponent";
 import { useForm } from "react-hook-form";
 
 const AddPage = () => {
-  const { register, handleSubmit, reset} = useForm({mode:"OnChange", defaultValues:{Image:""}});
+  const { register, handleSubmit, reset } = useForm({
+    mode: "OnChange",
+    defaultValues: { Image: "" },
+  });
   const [message, setMessage] = useState();
   const [collection, setCollection] = useState();
   let history = useHistory();
@@ -29,19 +32,19 @@ const AddPage = () => {
 
     if (response && response.status === 201) {
       if (formData.Image.length > 0) {
-        console.log("adding image")
+        console.log("adding image");
         formData._id = response.data;
         const imgData = new FormData();
         imgData.append("itemImage", formData.Image[0]);
         imgData.append("_id", formData._id);
 
-        axios.post(`/upload/${collection}`, imgData, {
+        const resp = await axios.post(`/upload/${collection}`, imgData, {
           headers: {
             "Content-Type": "multipart/form-data",
           },
         });
       }
-      reset()
+      reset();
       history.push(`/${collection}`);
     }
   };
@@ -50,10 +53,10 @@ const AddPage = () => {
     history.push("/food");
   };
 
-const handleClick = (collection) => {
-  setCollection(collection);
-  reset()
-}
+  const handleClick = (collection) => {
+    setCollection(collection);
+    reset();
+  };
 
   return (
     <AddPageContainer>
