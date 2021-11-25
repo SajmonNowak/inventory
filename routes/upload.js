@@ -36,8 +36,7 @@ router.post("/food", async (req, res) => {
     if (err) {
       return res.status(422).send(err.message);
     }
-    console.log(res)
-    console.log(req.file)
+    
     Food.updateOne(
       { _id: req.body._id },
       { $set: { imgPath: req.file.path } },
@@ -59,7 +58,8 @@ router.post("/clothes", (req, res) => {
       { _id: req.body._id },
       { $set: { imgPath: req.file.path } },
       { multi: true }
-    ).then((answer) => console.log(answer));
+    ).then((answer) => res.status(201).send(answer))
+    .catch((error) => res.status(409).send(error));
 
   })
 });

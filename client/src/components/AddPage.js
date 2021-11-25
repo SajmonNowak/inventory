@@ -32,12 +32,11 @@ const AddPage = () => {
 
     if (response && response.status === 201) {
       if (formData.Image.length > 0) {
-        console.log("adding image");
         formData._id = response.data;
         const imgData = new FormData();
         imgData.append("itemImage", formData.Image[0]);
         imgData.append("_id", formData._id);
-        console.log(imgData)
+      
         axios
           .post(`/upload/${collection}`, imgData, {
             headers: {
@@ -45,7 +44,6 @@ const AddPage = () => {
             },
           })
           .then((resp) => {
-            console.log(resp)
             reset();
             history.push(`/${collection}`);
           })
@@ -60,7 +58,7 @@ const AddPage = () => {
   };
 
   const handleCancel = () => {
-    history.push("/food");
+    history.push(`/${collection}`);
   };
 
   const handleClick = (collection) => {
