@@ -36,6 +36,7 @@ router.post("/food", async (req, res) => {
     if (err) {
       return res.status(422).send(err.message);
     }
+    console.log(req.file)
     Food.updateOne(
       { _id: req.body._id },
       { $set: { imgPath: req.file.path } },
