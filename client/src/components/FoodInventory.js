@@ -105,7 +105,7 @@ const FoodInventory = () => {
                         src={
                           item.imgPath
                             ? process.env.PUBLIC_URL +
-                              item.imgPath.replace("client/public", "")
+                              item.imgPath.replace(new RegExp("client/public|client/build"), "")
                             : placeholder
                         }
                         alt={item.name}
