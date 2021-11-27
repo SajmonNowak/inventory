@@ -7,7 +7,7 @@ const Clothes = require("../models/clothes");
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, "client/public/uploads");
+    cb(null, "client/build/uploads");
   },
   filename: function (req, file, cb) {
     cb(null, new Date().toISOString() + "-" + file.originalname);
