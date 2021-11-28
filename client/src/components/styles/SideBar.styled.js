@@ -79,6 +79,31 @@ export const AddItems = styled(NavItem)`
   }
 `;
 
+export const InfoElement = styled.div`
+  position: absolute;
+  width: 200px;
+  min-height: 80px;
+  background-color: #2b60ff;
+  padding: 25px;
+  right: -180px;
+  top: 20px;
+  font-size: 14px;
+  border-radius: 5px;
+
+  &:before {
+    content: "";
+    width: 0px;
+    height: 0px;
+    position: absolute;
+    border-left: 15px solid transparent;
+    border-right: 15px solid #2b60ff;
+    border-top: 15px solid #2b60ff;
+    border-bottom: 15px solid transparent;
+    left: -16px;
+    top: 0px;
+  }
+`;
+
 export const PageName = styled.div`
   margin-left: 20px;
 `;

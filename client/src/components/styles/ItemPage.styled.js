@@ -27,8 +27,8 @@ export const Content = styled.div`
 `;
 
 export const ImageContainer = styled.div`
-   height: 200px;
-   width: 300px;
+  min-height: 200px;
+  width: 300px;
   margin-bottom: 40px;
   display: flex;
   justify-content: center;

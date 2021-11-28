@@ -60,7 +60,7 @@ const ItemUI = ({ pathname }) => {
                 src={
                   itemData.imgPath
                     ? process.env.PUBLIC_URL +
-                      itemData.imgPath.replace("client/public", "")
+                      itemData.imgPath.replace(new RegExp("client/public|client/build"), "")
                     : placeholder
                 }
                 alt={itemData.name}

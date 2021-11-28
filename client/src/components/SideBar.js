@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   SideBarContainer,
   Name,
@@ -12,9 +12,12 @@ import {
   Logo,
   AddItems,
   PlusIcon,
+  InfoElement,
 } from "./styles/SideBar.styled";
 
 const SideBar = () => {
+  const [toggle, setToggle] = useState(false);
+
   return (
     <SideBarContainer>
       <Heading>
@@ -23,16 +26,27 @@ const SideBar = () => {
       </Heading>
       <SideNav>
         <NavItem to="/food">
-          <ClothesIcon className="icon" />
+          <FoodIcon className="icon" />
           <PageName>Food</PageName>
         </NavItem>
         <NavItem to="/clothes">
-          <FoodIcon className="icon" />
+          <ClothesIcon className="icon" />
           <PageName>Clothes</PageName>{" "}
         </NavItem>
-        <NavItem to="/statistics">
+        <NavItem
+          to={{}}
+          style={{ position: "relative" }}
+          onMouseOver={() => setToggle(true)}
+          onMouseLeave={() => setToggle(false)}
+        >
           <ChartIcon className="icon" />
           <PageName>Statistics</PageName>
+          {toggle && (
+            <InfoElement>
+              This Project does not have any additional features besides CRUD
+              operations{" "}
+            </InfoElement>
+          )}
         </NavItem>
         <AddItems to="/add">
           <PlusIcon />
