@@ -8,8 +8,8 @@ import { BsPlusLg } from "react-icons/bs";
 
 export const SideBarContainer = styled.div`
   grid-area: side;
-  min-width: 300px;
-  height: 100vh;
+  min-width: 320px;
+  min-height: 100vh;
   background-color: #01022d;
   color: white;
 `;
@@ -23,8 +23,12 @@ export const Name = styled.h1`
 export const Heading = styled.div`
   display: flex;
   align-items: center;
-  margin-bottom: 200px;
+  margin-bottom: 100px;
   padding: 20px;
+
+  @media (max-height: 600px) {
+    margin-bottom: 5vh;
+  }
 `;
 
 export const Logo = styled(MdOutlineInventory2)`
@@ -64,7 +68,8 @@ export const AddItems = styled(NavItem)`
   background-color: white;
   border-radius: 20px;
   display: flex;
-  margin-top: 100px;
+  margin-top: 200px;
+  margin-bottom: 20px;
   padding-left: 0px;
   width: 250px;
   justify-content: center;
@@ -76,6 +81,10 @@ export const AddItems = styled(NavItem)`
   &:hover {
     color: white;
     background-color: #2b60ff;
+  }
+
+  @media (max-height: 700px) {
+    margin-top: 10vh;
   }
 `;
 
@@ -89,6 +98,7 @@ export const InfoElement = styled.div`
   top: 20px;
   font-size: 14px;
   border-radius: 5px;
+  z-index: 100000;
 
   &:before {
     content: "";
@@ -101,6 +111,7 @@ export const InfoElement = styled.div`
     border-bottom: 15px solid transparent;
     left: -16px;
     top: 0px;
+    z-index: 100000;
   }
 `;
 
