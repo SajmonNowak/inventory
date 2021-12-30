@@ -70,8 +70,8 @@ const AddPage = () => {
     <AddPageContainer>
       <Heading>What do you want to add to your inventory?</Heading>
       <CollectionOptions>
-        <Option onClick={() => handleClick("food")}>Food</Option>
-        <Option onClick={() => handleClick("clothes")}>Clothes</Option>
+        <Option onClick={() => handleClick("food")} activated={collection === "food" ? true : false}>Food</Option>
+        <Option onClick={() => handleClick("clothes")} activated={collection === "clothes" ? true : false}>Clothes</Option>
       </CollectionOptions>
       {collection === "food" && (
         <AddFoodComponent

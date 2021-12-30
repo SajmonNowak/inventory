@@ -9,10 +9,10 @@ export const InputContainer = styled.div`
 export const Input = styled.input`
   width: ${({ type }) => (type === "number" ? "100px" : "100%")};
   height: 50px;
-  background-color: #b6ccfe;
-  border-color: white;
+  border: 1px solid grey;
   border-radius: 10px;
   outline: none;
+  box-shadow: none;
 
   &:focus {
     border: 2px solid #01022d;

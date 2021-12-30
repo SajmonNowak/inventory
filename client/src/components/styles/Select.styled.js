@@ -8,9 +8,10 @@ export const Select = styled.select`
   width: 100%;
   height: 50px;
   font-size: 18px;
-  border-color: #b6ccfe;
-  background-color: #b6ccfe;
+  background-color: white;
   border-radius: 10px;
+  border: 1px solid grey;
+
   outline: none;
 
   &:focus {

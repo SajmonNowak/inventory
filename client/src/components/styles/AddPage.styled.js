@@ -44,6 +44,7 @@ export const Heading = styled.h2`
 
 export const ButtonContainer = styled.div`
   margin-top: 40px;
+  padding-bottom: 50px;
   display: flex;
   justify-content: space-between;
 `;
@@ -60,6 +61,11 @@ export const Option = styled.div`
   width: 200px;
   height: 75px;
   margin: 20px;
-  background-color: #01022d;
+  background-color: ${({ activated }) => (activated ? "#2b60ff" : "#01022d")};
   border-radius: 10px;
+  transition: all 0.3s ease-out;
+
+  &:hover {
+    background-color: #2b60ff;
+  }
 `;
