@@ -8,6 +8,7 @@ export const Button = styled.button`
   color: ${({ primary }) => (primary ? "white" : "black")};
   border-radius: 10px;
   font-weight: bold;
+  transition: all 0.3s ease-out;
 
   &:hover {
     border-color: ${({ primary }) => (primary ? "none" : "#2b60ff")};

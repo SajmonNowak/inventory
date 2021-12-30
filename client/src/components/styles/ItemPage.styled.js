@@ -63,6 +63,7 @@ export const DataField = styled.div`
 
 export const Label = styled.div`
   width: 100px;
+  font-weight: bold;
 `;
 
 export const MarginElement = styled.div`

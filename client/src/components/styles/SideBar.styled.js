@@ -54,6 +54,7 @@ export const NavItem = styled(Link)`
   height: 40px;
   margin-top: 20px;
   padding-left: 20px;
+  color: ${({ selected }) => (selected ? " #2b60ff" : "white")};
 
   &:hover {
     background-color: rgba(6, 9, 193, 0.4);
@@ -64,7 +65,7 @@ export const NavItem = styled(Link)`
 `;
 
 export const AddItems = styled(NavItem)`
-  color: #070bf2;
+  color: #070bf2 !important;
   background-color: white;
   border-radius: 20px;
   display: flex;
@@ -73,13 +74,14 @@ export const AddItems = styled(NavItem)`
   padding-left: 0px;
   width: 250px;
   justify-content: center;
+  transition: all 0.3s ease-out;
 
   .addName {
     margin: 0px;
   }
 
   &:hover {
-    color: white;
+    color: white !important;
     background-color: #2b60ff;
   }
 

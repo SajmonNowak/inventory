@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useLocation } from "react-router";
 import {
   SideBarContainer,
   Name,
@@ -17,6 +18,7 @@ import {
 
 const SideBar = () => {
   const [toggle, setToggle] = useState(false);
+  const { pathname } = useLocation();
 
   return (
     <SideBarContainer>
@@ -25,11 +27,14 @@ const SideBar = () => {
         <Name>Inventory App</Name>
       </Heading>
       <SideNav>
-        <NavItem to="/food">
+        <NavItem selected={pathname === "/food" ? true : false} to="/food">
           <FoodIcon className="icon" />
           <PageName>Food</PageName>
         </NavItem>
-        <NavItem to="/clothes">
+        <NavItem
+          to="/clothes"
+          selected={pathname === "/clothes" ? true : false}
+        >
           <ClothesIcon className="icon" />
           <PageName>Clothes</PageName>{" "}
         </NavItem>
@@ -43,8 +48,8 @@ const SideBar = () => {
           <PageName>Statistics</PageName>
           {toggle && (
             <InfoElement>
-              This Project does not have any additional features besides CRUD
-              operations{" "}
+              This Project does not have any additional features besides
+              creating, updating, deleteing and updating objects.
             </InfoElement>
           )}
         </NavItem>
